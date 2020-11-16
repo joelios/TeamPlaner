@@ -11,6 +11,10 @@ app_color = "grey"
 app_email = "info@msmr.ch"
 app_license = "MIT"
 
+
+# change default design
+base_template_path = "/teamplaner/templates/base.html"
+
 # Includes in <head>
 # ------------------
 

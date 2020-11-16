@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!-- developed by msmr.ch -->
+<html lang="en">
+	<head>
+		<!-- Meta block -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="generator" content="frappe">
+		
+		<!-- add pwa stuff -->
+		
+		<!-- css -->
+		<link type="text/css" rel="stylesheet" href="/assets/teamplaner/fontawesome-free-5.15.1-web/css/all.min.css">
+		<link type="text/css" rel="stylesheet" href="/assets/css/frappe-web-b4.css">
+		{%- for link in web_include_css %}
+		<link type="text/css" rel="stylesheet" href="{{ link|abs_url }}">
+		{%- endfor -%}
+		{%- block style %}{%- endblock -%}
+
+		<script>
+			window.frappe = {};
+			frappe.ready_events = [];
+			frappe.ready = function(fn) {
+				frappe.ready_events.push(fn);
+			}
+			window.dev_server = {{ dev_server }};
+			window.socketio_port = {{ frappe.socketio_port }};
+		</script>
+	</head>
+	<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {% endif -%}>
+		{% block content %}
+			{{ content }}
+		{% endblock %}
+
+		{% block base_scripts %}
+		<!-- js should be loaded in body! -->
+		<script type="text/javascript" src="/assets/frappe/js/lib/jquery/jquery.min.js"></script>
+		<script type="text/javascript" src="/assets/js/frappe-web.min.js"></script>
+		<script type="text/javascript" src="/assets/js/bootstrap-4-web.min.js"></script>
+		{% endblock %}
+
+		{%- for link in web_include_js %}
+		<script type="text/javascript" src="{{ link | abs_url }}"></script>
+		{%- endfor -%}
+
+		{%- block script %}{%- endblock %}
+		<!-- csrf_token -->
+		{%- block body_include %}{{ body_include or "" }}{% endblock -%}
+	</body>
+</html>
