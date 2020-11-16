@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include teamplaner *.css
+recursive-include teamplaner *.csv
+recursive-include teamplaner *.html
+recursive-include teamplaner *.ico
+recursive-include teamplaner *.js
+recursive-include teamplaner *.json
+recursive-include teamplaner *.md
+recursive-include teamplaner *.png
+recursive-include teamplaner *.py
+recursive-include teamplaner *.svg
+recursive-include teamplaner *.txt
+recursive-exclude teamplaner *.pyc
