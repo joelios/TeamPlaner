@@ -1,0 +1,14 @@
+{% extends "templates/web.html" %}
+
+{% block style %}
+	<style>
+		#nav-top-mein-profil {
+			color: #FFD700 !important;
+		}
+	</style>
+{% endblock %}
+{% block page_content %}
+	{% include "templates/navbar_top.html" %}
+	
+	{% include "templates/navbar_bottom.html" %}
+{% endblock %}
