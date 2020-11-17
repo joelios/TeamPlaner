@@ -4,7 +4,7 @@
 from __future__ import unicode_literals
 import frappe
 import frappe.utils
-from frappe.utils.oauth import get_oauth2_authorize_url, get_oauth_keys, login_via_oauth2, login_via_oauth2_id_token, login_oauth_user as _login_oauth_user, redirect_post_login, oauth_decoder
+from frappe.utils.oauth import get_oauth2_authorize_url, get_oauth_keys, login_via_oauth2, login_via_oauth2_id_token, login_oauth_user as _login_oauth_user, redirect_post_login #, oauth_decoder
 import json
 from frappe import _
 from frappe.auth import LoginManager
@@ -92,3 +92,8 @@ def login_via_token(login_token):
 	frappe.local.login_manager = LoginManager()
 
 	redirect_post_login(desk_user = frappe.db.get_value("User", frappe.session.user, "user_type")=="System User")
+
+def oauth_decoder(data):
+	if isinstance(data, bytes):
+		data = data.decode("utf-8")
+	return json.loads(data)
