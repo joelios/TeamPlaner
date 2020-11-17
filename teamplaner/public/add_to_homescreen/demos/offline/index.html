@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Love2Dev Add To Homescreen Test Site</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-title" content="Add to Home">
+
+    <link rel="shortcut icon" sizes="16x16" href="imgs/icon-16x16.png">
+    <link rel="shortcut icon" sizes="196x196" href="imgs/icon-196x196.png">
+
+    <link rel="apple-touch-icon" href="imgs/icon-152x152.png">
+
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style/addtohomescreen.css">
+    <link rel="stylesheet" type="text/css" href="style/site.css">
+    <link rel="stylesheet" type="text/css" href="style/animate.css">
+    <meta name="theme-color" content="#fff">
+
+    <link href="manifest.json" rel="manifest">
+
+</head>
+
+<body>
+
+    <div class="container">
+        <br /><br /><br />
+        <p>The Love2Dev Custom Add to Homescreen Prompt Manager. You can control how visitors are prompted to add your
+            <a href="https://love2dev.com/pwa/"></a>Progressive Web App</a> to their device, including iPhone and iPad.
+        </p>
+        <p>There are some basic criteria a page must meet in order to qualify to trigger a prompt. There must at least
+            be a
+            reference to a web manifest file and a registered service worker. From there you can configure the library
+            to
+            follow your own ruleset.</p>
+        <p>There are several example test pages available to demonstrate how the library can be used. There are several
+            custom properties and settings you can use to control how the native and non-native prompts are triggered.
+        </p>
+        <p>Chrome and the Chromium based Edge support a native prompt for both Android and desktops. If available this
+            is
+            the default choice. The library catches the beforeinstall event to reference the event object and display
+            the
+            native prompt according to the custom ruleset.</p>
+        <p>Classic Edge does not have an Add to Desktop feature, so no prompt should display. This will be the general
+            rule
+            in any browser that does not have some sort of homescreen support, like desktop FireFox.</p>
+        <br /><br /><br />
+        <div class="d-flex row">
+
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">General Sample</h5>
+                    <p class="card-text">A set of properties and values passed to the library to demonstrate its
+                        flexibility.</p>
+                    <a href="general/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">Custom Trigger</h5>
+                    <p class="card-text">Trigger the prompt mannually by calling the trigger method.</p>
+                    <a href="trigger/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">Custom Criteria</h5>
+                    <p class="card-text">Sets the customCriteria property to demonstrate how you can control if a prompt
+                        can
+                        be displayed using a custom function or simply passing true or false.</p>
+                    <a href="custom/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">iPhone</h5>
+                    <p class="card-text">Using the debug property to mannually set the platform (browser) to iPhone.
+                        Note:
+                        Safari is the only iOS browser supported by Apple restrictions. So psuedo browsers like Chrome,
+                        Edge
+                        & FireFox are excluded.</p>
+                    <a href="iphone/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">iPad</h5>
+                    <p class="card-text">Using the debug property to mannually set the platform (browser) to iPad. Note:
+                        Safari is the only iOS browser supported by Apple restrictions. So psuedo browsers like Chrome,
+                        Edge
+                        & FireFox are excluded.</p>
+                    <a href="ipad/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">FireFox</h5>
+                    <p class="card-text">Using the debug property to mannually set the platform (browser) to FireFox.
+                        Note:
+                        FireFox only supports Add to Homescreen on Android.</p>
+                    <a href="firefox/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">Opera</h5>
+                    <p class="card-text">Using the debug property to mannually set the platform (browser) to FireFox.
+                        Note:
+                        Opera only supports Add to Homescreen on Android.</p>
+                    <a href="opera/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">Samsung</h5>
+                    <p class="card-text">Using the debug property to mannually set the platform (browser) to FireFox.
+                        Note:
+                        Samsung only supports Add to Homescreen on Android.</p>
+                    <a href="ipad/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="card col-sm-12 col-md-6 col-lg-4 col-xl-3">
+                <div class="card-body">
+                    <h5 class="card-title">Inline</h5>
+                    <p class="card-text">Display an inline promotion.</p>
+                    <a href="inline/" class="card-link">Try it Out</a>
+                </div>
+            </div>
+            <div class="row m-3 col-12">
+                <div class="log-target"></div>
+            </div>
+            <div class="row d-flex mx-5 my-2 justify-content-end col-12">
+                <button class="btn btn-primary btn-clear" onClick="clearToken();">Clear Token</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="ath-container banner-bottom-center">
+        <div class="ath-banner">
+            <div class="ath-banner-cell ath-banner-cell-md">
+                <img src="imgs/pwa-logo-50x50.png" alt="PWA" class="ath-prompt-logo">
+            </div>
+            <div class="ath-banner-cell">
+                <button class="btn btn-cancel-ath btn-link">Not Now</button>
+            </div>
+            <div class="ath-banner-title">
+                <p>Install this PWA?</p>
+            </div>
+            <div class="ath-banner-cell">
+                <button class="btn btn-install-ath btn-success">Install</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/addtohomescreen.js"></script>
+    <script>
+        let target = document.querySelector( ".log-target" );
+
+        if ( target ) {
+            target.innerText += "\r\nstandalone: " + window.navigator.standalone;
+        }
+
+        function clearToken() {
+
+            ath.clearSession(); // reset the user session
+
+        }
+
+        let $btnCancel = document.querySelector( ".btn-cancel-ath" ),
+            $btnInstall = document.querySelector( ".btn-install-ath" ),
+            instance,
+            session = {};
+
+        $btnCancel.addEventListener( "click", e => {
+
+            e.preventDefault();
+
+            handleCancel();
+
+            return false;
+
+        } );
+
+        $btnInstall.addEventListener( "click", e => {
+
+            e.preventDefault();
+
+            handleInstall();
+
+            return false;
+
+        } );
+
+        function handleCancel() {
+
+            instance.optOut();
+
+        }
+
+        function handleInstall() {
+
+            if ( instance.beforeInstallPrompt ) {
+
+                instance.triggerNativePrompt();
+
+            } else {
+
+                instance.optIn();
+
+            }
+
+        }
+
+        if ( "serviceWorker" in navigator ) {
+
+            navigator.serviceWorker.register( "/sw.js" );
+
+            var ath = addToHomescreen( {
+                autostart: false,
+                autoHide: 0,
+                logging: true,
+                minSessions: 2,
+                onShow: function ( platform, ses, _instance ) {
+                    console.log( "showing: ", platform );
+                    console.log( "session: ", ses );
+                    console.log( "_instance: ", _instance );
+
+                    session = ses;
+                    instance = _instance;
+
+                    let $ath_prompt = document.querySelector( ".ath-container" );
+
+                    $ath_prompt.classList.add( "d-flex" );
+
+                },
+                onInit: function ( _instance ) {
+                    console.log( "initializing" );
+                },
+                onAdd: function ( _instance, session ) {
+                    console.log( "adding" );
+                },
+                onInstall: function ( evt ) {
+
+                    console.log( "Installing" );
+                    handleInstall();
+
+                },
+                onCancel: function ( choiceResult ) {
+
+                    console.log( "Cancelling" );
+                    handleCancel();
+
+                },
+                displayNextPrime: true,
+                customCriteria: true,
+                displayPace: 0,
+                mustShowCustomPrompt: false
+            } );
+
+        }
+    </script>
+</body>
+
+</html>

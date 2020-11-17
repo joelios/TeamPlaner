@@ -1,0 +1,40 @@
+:root {
+    --love2dev-red-darkest: #250000;
+    --love2dev-red-darker: #490000;
+    --love2dev-red-dark: #6E0000;
+    --love2dev-red: #7A0000;
+    --love2dev-red-light: #A24D4D;
+    --love2dev-red-lighter: #CA9999;
+    --love2dev-red-lightest: #F2E6E6;
+
+    --love2dev-white-darkest: #4C4C4C;
+    --love2dev-white-darker: #989898;
+    --love2dev-white-dark: #E5E5E5;
+    --love2dev-white: #FEFEFE;
+    --love2dev-white-light: #FEFEFE;
+    --love2dev-white-lighter: #FFFFFF;
+    --love2dev-white-lightest: #FFFFFF;
+
+    --love2dev-dark-darkest: #101113;
+    --love2dev-dark-darker: #1F2326;
+    --love2dev-dark-dark: #2F343A;
+    --love2dev-dark: #343A40;
+    --love2dev-dark-light: #717579;
+    --love2dev-dark-lighter: #AEB0B3;
+    --love2dev-dark-lightest: #EBEBEC;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: var(--love2dev-white);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(0.9rem + .5vw);
+}

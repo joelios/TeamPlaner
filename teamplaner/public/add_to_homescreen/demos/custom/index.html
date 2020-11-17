@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Add To Home</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-title" content="Add to Home">
+
+    <link rel="shortcut icon" sizes="16x16" href="imgs/icon-16x16.png">
+    <link rel="shortcut icon" sizes="196x196" href="imgs/icon-196x196.png">
+    <link rel="apple-touch-icon-precomposed" href="imgs/icon-152x152.png">
+
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="style/addtohomescreen.css">
+    <link rel="stylesheet" type="text/css" href="style/animate.css">
+
+    <meta name="theme-color" content="#fff">
+    <link href="manifest.json" rel="manifest">
+
+</head>
+
+<body>
+    <section class="container">
+        <br /><br /><br />
+        <p>Uses a simple random number generator to determine if the prompt can be triggered.</p>
+        <p>This allows the site owner/manager to determine if there are application specific criteria that must be
+            met
+            before the user can be prompted to add to homescreen. For example the user must be authenticated or meet
+            a
+            certain score or threshold.</p>
+        <br /><br /><br />
+        <div class="log-target"></div>
+    </section>
+    <div class="ath-container banner-bottom-center">
+        <div class="ath-banner">
+            <div class="ath-banner-cell ath-banner-cell-md">
+                <img src="imgs/pwa-logo-50x50.png" alt="PWA" class="ath-prompt-logo">
+            </div>
+            <div class="ath-banner-cell">
+                <button class="btn btn-cancel btn-link">Not Now</button>
+            </div>
+            <div class="ath-banner-title">
+                <p>Install this PWA?</p>
+            </div>
+            <div class="ath-banner-cell">
+                <button class="btn btn-install btn-success">Install</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/custom_console.js"></script>
+
+    <script src="js/addtohomescreen.js"></script>
+    <script>
+        var ath = addToHomescreen( {
+            autostart: true,
+            lifespan: 15,
+            logging: true,
+            minSessions: 0,
+            onShow: function () {
+                console.log( "showing" );
+            },
+            onInit: function () {
+                console.log( "initializing" );
+            },
+            onAdd: function () {
+                console.log( "adding" );
+            },
+            onInstall: function () {
+                console.log( "Installing" );
+            },
+            onCancel: function () {
+                console.log( "Cancelling" );
+            },
+            customCriteria: function () {
+
+                return Math.floor( Math.random() * 5 ) > 3;
+
+            },
+            displayPace: 0,
+            customPrompt: {
+                title: "custom message",
+                src: "https://love2dev.com/meta/android/android-launchericon-48-48.png",
+                cancelMsg: "go away",
+                installMsg: "do it"
+            }
+        } );
+
+        if ( "serviceWorker" in navigator ) {
+
+            navigator.serviceWorker.register( "/sw.js" );
+
+        }
+    </script>
+</body>
+
+</html>

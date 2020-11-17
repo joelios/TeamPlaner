@@ -12,8 +12,13 @@ app_email = "info@msmr.ch"
 app_license = "MIT"
 
 
-# change default design
+# teamplaner specific changes
 base_template_path = "/teamplaner/templates/base.html"
+home_page = "welcome"
+website_route_rules = [
+	{"from_route": "/me", "to_route": "dashboard"}
+]
+web_include_js = "/assets/teamplaner/js/teamplaner.js"
 
 # Includes in <head>
 # ------------------
@@ -39,7 +44,7 @@ base_template_path = "/teamplaner/templates/base.html"
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "login"
+# home_page = "welcome"
 
 # website user home page (by Role)
 # role_home_page = {

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Add To Home - Link to Guideance Pages</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta name="apple-mobile-web-app-title" content="Add to Home">
+
+    <link rel="shortcut icon" sizes="16x16" href="imgs/icon-16x16.png">
+    <link rel="shortcut icon" sizes="196x196" href="imgs/icon-196x196.png">
+    <link rel="apple-touch-icon-precomposed" href="imgs/icon-152x152.png">
+
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="style/addtohomescreen.css">
+    <link rel="stylesheet" type="text/css" href="style/animate.css">
+
+    <meta name="theme-color" content="#fff">
+    <link href="manifest.json" rel="manifest">
+
+</head>
+
+<body>
+    <div class="container">
+        <br /><br /><br />
+        <p>Use the native prompt - Android</p>
+        <div class="row d-flex mx-5 my-2 justify-content-end">
+            <button class="btn btn-primary btn-clear" onClick="clearToken();">Clear Token</button>
+        </div>
+
+        <div class="row m-3">
+            <div class="log-target"></div>
+        </div>
+    </div>
+    <div class="ath-container banner-bottom-center">
+        <div class="ath-banner">
+            <div class="ath-banner-cell ath-banner-cell-md">
+                <img src="imgs/pwa-logo-50x50.png" alt="PWA" class="ath-prompt-logo">
+            </div>
+            <div class="ath-banner-cell">
+                <button class="btn btn-cancel btn-link">Not Now</button>
+            </div>
+            <div class="ath-banner-title">
+                <p>Install this PWA?</p>
+            </div>
+            <div class="ath-banner-cell">
+                <button class="btn btn-install btn-success">Install</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/addtohomescreen.js"></script>
+    <script>
+        var ath = addToHomescreen( {
+            autostart: true,
+            lifespan: 5,
+            debug: "iphone",
+            logging: true,
+            minSessions: 2,
+            onShow: function () {
+                console.log( "showing" );
+            },
+            onInit: function () {
+                console.log( "initializing" );
+            },
+            onAdd: function () {
+                console.log( "adding" );
+            },
+            onInstall: function () {
+                console.log( "Installing" );
+            },
+            onCancel: function () {
+                console.log( "Cancelling" );
+            },
+            customCriteria: true,
+            displayPace: 0,
+            prompt: {
+                "native": {
+                    targetUrl: undefined
+                },
+                "edge": {
+                    targetUrl: undefined
+                },
+                "chromium": {
+                    targetUrl: "guideance/chrome/android/"
+                },
+                "iphone": {
+                    targetUrl: "guideance/iphone/"
+                },
+                "ipad": {
+                    targetUrl: undefined
+                },
+                "firefox": {
+                    targetUrl: undefined
+                },
+                "samsung": {
+                    targetUrl: undefined
+                },
+                "opera": {
+                    targetUrl: undefined
+                }
+            },
+            customPrompt: {
+                title: "custom message",
+                src: "https://love2dev.com/meta/android/android-launchericon-48-48.png",
+                cancelMsg: "go away",
+                installMsg: "do it"
+            }
+        } );
+
+        function clearToken() {
+
+            ath.clearSession(); // reset the user session
+
+        }
+
+        if ( "serviceWorker" in navigator ) {
+
+            navigator.serviceWorker.register( "/sw.js" );
+
+        }
+    </script>
+</body>
+
+</html>

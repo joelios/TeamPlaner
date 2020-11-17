@@ -1,0 +1,48 @@
+{% block style %}
+	<style>
+		.offcanvas-header{ display:none; }
+		@media (max-width: 992px) {
+		  .offcanvas-header{ display:block; }
+		  .navbar-collapse {
+			position: fixed;
+			top:0; 
+			bottom: 0;
+			left: 100%;
+			width: 100%;
+			padding-right: 1rem;
+			padding-left: 1rem;
+			overflow-y: auto;
+			visibility: hidden;
+			background-color: black;
+			transition: visibility .2s ease-in-out, -webkit-transform .2s ease-in-out;
+		  }
+		  .navbar-collapse.show {
+			visibility: visible;
+			transform: translateX(-100%);
+		  }
+		}
+	</style>
+{% endblock %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <a class="navbar-brand" href="#">{% include "templates/wordmark_small.html" %}</a>
+  <button class="navbar-toggler" type="button" data-trigger="#main_nav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse" id="main_nav">
+    <div class="offcanvas-header mt-3">  
+      <button class="btn btn-outline-danger btn-close float-right"><i class="fas fa-times"></i></button>
+      <h5 class="py-2 text-white">Navigation</h5>
+    </div>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a id="nav-top-pricing" class="nav-link" href="javascript:void(0)">Pricing</a>
+    </li>
+    <li class="nav-item">
+      <a id="nav-top-wiki" class="nav-link" href="javascript:void(0)">Wiki</a>
+    </li>
+	<li class="nav-item">
+      <a id="nav-top-login" class="nav-link" href="/login#login">Login</a>
+    </li>
+  </ul>
+  </div>
+</nav>
