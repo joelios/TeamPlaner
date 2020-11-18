@@ -5,10 +5,18 @@
 		#nav-top-mein-profil {
 			color: #FFD700 !important;
 		}
+		{% include "templates/includes/msmroverlay/msmroverlay.css" %}
 	</style>
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
-	
+	<a href="/?cmd=web_logout"><button type="button" class="btn btn-danger">Abmelden</button></a>
+	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
+{% endblock %}
+
+{% block script %}
+	<script>
+		{% include "templates/includes/msmroverlay/msmroverlay.js" %}
+	</script>
 {% endblock %}

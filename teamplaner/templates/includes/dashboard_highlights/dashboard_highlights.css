@@ -1,0 +1,24 @@
+.card {
+	margin-top: 10px;
+	height: 15vh;
+}
+.card.left {
+	margin-left: 10px;
+	margin-right: 5px;
+}
+.card.right {
+	margin-right: 10px;
+	margin-left: 5px;
+}
+.card-body {
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+.text-muted {
+	font-size: 10px;
+}
+#nav-bottom-dashboard {
+	color: #FFD700 !important;
+}
+.col-6 {
+	padding: 0 0 0 0 !important;
+}

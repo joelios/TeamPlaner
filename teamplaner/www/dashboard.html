@@ -2,226 +2,27 @@
 
 {% block style %}
 	<style>
-		.card {
-			margin-top: 15px;
-		}
-		.card-body {
-			padding: 0.5rem 1rem 0.5rem 1rem;
-		}
-		.vl {
-			border-left: 1px solid rgba(0, 0, 0, 0.125);
-			height: 100%;
-		}
-		.text-muted {
-			font-size: 10px;
-		}
-		#nav-bottom-dashboard {
-			color: #FFD700 !important;
-		}
+		{% include "templates/includes/dashboard_highlights/dashboard_highlights.css" %}
+		{% include "templates/includes/msmroverlay/msmroverlay.css" %}
 	</style>
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
-	<div class="container"></div>
+	<div class="container" style="margin-bottom: 15px;"></div>
 	<div class="row">
-		<div class="col-12" style="margin-top: 10px;">
-			<div class="container">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-6">
-								<center>
-									Next Event
-									<table class="text-muted" style="width: 100%;">
-										<tbody>
-											<tr>
-												<td style="text-align: center;"><i class="fas fa-info"></i></td>
-												<td style="text-align: center;">Training</td>
-											</tr>
-											<tr>
-												<td style="text-align: center;"><i class="fas fa-map-marker-alt"></i></td>
-												<td style="text-align: center;">Oberseen</td>
-											</tr>
-											<tr>
-												<td style="text-align: center;"><i class="fas fa-calendar-day"> <i class="far fa-clock"></i></td>
-												<td style="text-align: center;">16.11.2020 20:50</td>
-											</tr>
-										</tbody>
-									</table>
-								</center>
-							</div>
-							<div class="col-6 vl">
-								<center>Next Game<br>
-								<p class="text-muted">Zur Zeit kein Spiel vorhanden</p></center>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-6">
-			<div class="container">
-				<div class="card">
-					<div class="card-body">
-						<center>
-							Tabelle
-							<table class="text-muted" style="width: 100%;">
-								<tbody>
-									<tr>
-										<td style="text-align: left;">3</td>
-										<td style="text-align: left;">XYZ</td>
-										<td style="text-align: left;">+3</td>
-										<td style="text-align: right;">8</td>
-									</tr>
-									<tr>
-										<td style="text-align: left;"><b>4</b></td>
-										<td style="text-align: left;"><b>HCR</b></td>
-										<td style="text-align: left;"><b>+5</b></td>
-										<td style="text-align: right;"><b>7</b></td>
-									</tr>
-									<tr>
-										<td style="text-align: left;">5</td>
-										<td style="text-align: left;">XYZ</td>
-										<td style="text-align: left;">+3</td>
-										<td style="text-align: right;">6</td>
-									</tr>
-								</tbody>
-							</table>
-						</center>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-6">
-			<div class="container">
-				<div class="card">
-					<div class="card-body">
-						<center>
-							Liveticker
-							<table class="text-muted" style="width: 100%;">
-								<tbody>
-									<tr>
-										<td style="text-align: left;"><b>HCR</b></td>
-										<td style="text-align: right;"><b>3</b></td>
-									</tr>
-									<tr>
-										<td style="text-align: left;">vs</td>
-										<td style="text-align: right;"></td>
-									</tr>
-									<tr>
-										<td style="text-align: left;">Zürisee</td>
-										<td style="text-align: right;">1</td>
-									</tr>
-								</tbody>
-							</table>
-							</center>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-12">
-			<div class="container">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							<div class="col-6">
-								<center>
-									Topscorer
-									<table class="text-muted" style="width: 100%;">
-										<tbody>
-											<tr>
-												<td>1</td>
-												<td>Severin Schindler</td>
-												<td>4</td>
-												<td>3</td>
-												<td>7</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Joël Mesmer</td>
-												<td>4</td>
-												<td>2</td>
-												<td>6</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Andreas Christen</td>
-												<td>3</td>
-												<td>3</td>
-												<td>6</td>
-											</tr>
-										</tbody>
-									</table>
-								</center>
-							</div>
-							<div class="col-6 vl">
-								<center>
-									Präsenz
-									<table class="text-muted" style="width: 100%;">
-										<tbody>
-											<tr>
-												<td>1</td>
-												<td>Severin Schindler</td>
-												<td style="text-align: right;">100%</td>
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Joël Mesmer</td>
-												<td style="text-align: right;">95%</td>
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Andreas Christen</td>
-												<td style="text-align: right;">90%</td>
-											</tr>
-										</tbody>
-									</table>
-								</center>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="col-12">
-			<div class="container">
-				<div class="card">
-					<div class="card-body">
-						<center>Meine Statistiken</center>
-						<div class="row">
-							<div class="col-6">
-								<center>
-									Topscorer
-									<table class="text-muted" style="width: 100%;">
-										<tbody>
-											<tr>
-												<td>Joël Mesmer</td>
-												<td>4</td>
-												<td>2</td>
-												<td>6</td>
-											</tr>
-										</tbody>
-									</table>
-								</center>
-							</div>
-							<div class="col-6 vl">
-								<center>
-									Präsenz
-									<table class="text-muted" style="width: 100%;">
-										<tbody>
-											<tr>
-												<td>Joël Mesmer</td>
-												<td style="text-align: right;">95%</td>
-											</tr>
-										</tbody>
-									</table>
-								</center>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% include "templates/includes/dashboard_highlights/next_event.html" %}
+		{% include "templates/includes/dashboard_highlights/next_game.html" %}
+		{% include "templates/includes/dashboard_highlights/tabelle.html" %}
+		{% include "templates/includes/dashboard_highlights/liveticker.html" %}
+		{% include "templates/includes/dashboard_highlights/topscorer.html" %}
+		{% include "templates/includes/dashboard_highlights/praesenz.html" %}
 	</div>
+	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
+{% endblock %}
+
+{% block script %}
+	<script>
+		{% include "templates/includes/msmroverlay/msmroverlay.js" %}
+	</script>
 {% endblock %}

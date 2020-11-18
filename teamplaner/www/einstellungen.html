@@ -5,10 +5,17 @@
 		#nav-top-einstellungen {
 			color: #FFD700 !important;
 		}
+		{% include "templates/includes/msmroverlay/msmroverlay.css" %}
 	</style>
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
-	
+	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
+{% endblock %}
+
+{% block script %}
+	<script>
+		{% include "templates/includes/msmroverlay/msmroverlay.js" %}
+	</script>
 {% endblock %}
