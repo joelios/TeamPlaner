@@ -9,6 +9,7 @@ def get_data():
 			"color": "grey",
 			"icon": "octicon octicon-file-directory",
 			"type": "module",
-			"label": _("TeamPlaner")
+			"label": _("TeamPlaner"),
+			"onboard_present": 1
 		}
 	]
