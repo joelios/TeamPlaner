@@ -10,6 +10,17 @@
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
+	<div class="container" style="height: 15px;"></div>
+	<center><img src="{{ team_img }}"></center>
+	{% for user in users %}
+		<div class="media">
+			<img src="{{ user.bild }}" class="align-self-center mr-3" style="width:60px">
+			<div class="media-body">
+				<h4>{{ user.vorname }} {{ user.nachname }}</h4>
+				<p>{{ user.position }}, {{ user.nummer }}</p>
+			</div>
+		</div>
+	{% endfor %}
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}

@@ -11,7 +11,7 @@
 
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
-	<div class="container" style="margin-bottom: 15px;"></div>
+	<div class="container" style="height: 15px;"></div>
 	<center><h4>Meine Daten</h4></center>
 	<div class="input-group mb-1">
 		<div class="input-group-prepend">
@@ -66,7 +66,10 @@
 		</div>
 		<input type="text" class="form-control" placeholder="Lizenz" disabled value="{{ user_stamm.lizenz }}">
 	</div>
-	<center><h4>Meine Bussen</h4></center>
+	<center>
+		<img src="{{ team_img }}" width="300">
+		<h4>Meine Bussen</h4>
+	</center>
 	<center><a href="/?cmd=web_logout"><button type="button" class="btn btn-danger">Logout</button></a></center><div style="min-height: 50px;"></div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}

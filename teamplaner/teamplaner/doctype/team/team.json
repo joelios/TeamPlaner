@@ -6,7 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "team",
-  "verein"
+  "verein",
+  "bild"
  ],
  "fields": [
   {
@@ -23,9 +24,15 @@
    "label": "Verein",
    "options": "Verein",
    "reqd": 1
+  },
+  {
+   "fieldname": "bild",
+   "fieldtype": "Attach Image",
+   "label": "Bild"
   }
  ],
- "modified": "2020-11-18 11:43:50.223714",
+ "image_field": "bild",
+ "modified": "2020-11-18 16:20:10.434779",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Team",
