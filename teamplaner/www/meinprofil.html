@@ -11,65 +11,23 @@
 
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
-	<div class="container" style="height: 15px;"></div>
-	<center><h4>Meine Daten</h4></center>
-	<div class="input-group mb-1">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fa fa-user-circle"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="First Name" disabled value="{{ user_stamm.vorname }}">
-		<input type="text" class="form-control" placeholder="Last Name" disabled value="{{ user_stamm.nachname }}">
-	</div>
-	<div class="input-group mb-1">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Birthday" disabled value="{{ user_stamm.geburtsdatum }}">
-	</div>
-	<div class="input-group mb-1">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Mobile" disabled value="{{ user_stamm.mobile }}">
-	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="far fa-address-card"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Address" disabled value="{{ user_stamm.adresse }}">
-	</div>
+	<div class="container" style="height: 30px;"></div>
+	{% include "templates/includes/meinprofile/mein_profile_card.html" %}
 	<center>
-		<h4>Ich & Mein Team</h4>
-		<img src="{{ user_stamm.bild }}" width="100">
-	</center>
-	<div class="input-group mb-1">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fa fa-users"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Team" disabled value="{{ user_stamm.team }}">
-	</div>
-	<div class="input-group mb-1">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fas fa-tshirt"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Number" disabled value="{{ user_stamm.nummer }}">
-	</div>
-	<div class="input-group mb-1">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="fas fa-crosshairs"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Position" disabled value="{{ user_stamm.position }}">
-	</div>
-	<div class="input-group mb-3">
-		<div class="input-group-prepend">
-			<span class="input-group-text"><i class="far fa-id-badge"></i></span>
-		</div>
-		<input type="text" class="form-control" placeholder="Lizenz" disabled value="{{ user_stamm.lizenz }}">
-	</div>
-	<center>
-		<img src="{{ team_img }}" width="300">
-		<h4>Meine Bussen</h4>
-	</center>
+		<h4>Meine offenen Bussen</h4>
+		<table Style="width: 100%;">
+			<tr>
+				<th>Datum</th>
+				<th>Begründung</th>
+				<th>Betrag</th>
+			</tr>
+			<tr>
+				<td>01.01.2020</td>
+				<td>Nicht abgemeldet</td>
+				<td>10.-</td>
+			</tr>
+		</table>
+	</center><br>
 	<center><a href="/?cmd=web_logout"><button type="button" class="btn btn-danger">Logout</button></a></center><div style="min-height: 50px;"></div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
