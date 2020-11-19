@@ -11,16 +11,25 @@
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 15px;"></div>
-	<center><img src="{{ team_img }}"></center>
-	{% for user in users %}
-		<div class="media">
-			<img src="{{ user.bild }}" class="align-self-center mr-3" style="width:60px">
-			<div class="media-body">
-				<h4>{{ user.vorname }} {{ user.nachname }}</h4>
-				<p>{{ user.position }}, {{ user.nummer }}</p>
-			</div>
-		</div>
-	{% endfor %}
+	{% if team_img %}
+		<center><img src="{{ team_img }}"></center>
+	{% else %}
+		<center><img src="/assets/teamplaner/images/team.png"></center>
+	{% endif %}
+	<hr>
+	{% if users %}
+		{% for user in users %}
+			{% include "templates/includes/team/team_card.html" %}
+		{% endfor %}
+	{% else %}
+		{% include "templates/includes/team/team_card_empty.html" %}
+	{% endif %}
+	{% if staff_img %}
+		<center><img src="{{ staff_img }}"></center>
+	{% else %}
+		<center><img src="/assets/teamplaner/images/team.png"></center>
+	{% endif %}
+	<div class="container" style="height: 15px;"></div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}

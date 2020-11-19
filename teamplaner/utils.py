@@ -29,3 +29,14 @@ def get_user_list():
 	user = get_user_profile()
 	users = frappe.db.sql("""SELECT `vorname`, `nachname`, `position`, `bild`, `nummer` FROM `tabMitglied` WHERE `team` = '{team}' ORDER BY `vorname` ASC""".format(team=user.team), as_dict=True)
 	return users
+	
+def get_staff_img():
+	user_profile = get_user_profile()
+	if user_profile:
+		try:
+			staff_img = frappe.get_doc("Team", user_profile.team).staff_bild
+		except:
+			staff_img = False
+		return staff_img
+	else:
+		return False

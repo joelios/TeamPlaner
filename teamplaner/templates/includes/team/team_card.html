@@ -1,0 +1,12 @@
+<div class="media">
+	{% if user.bild %}
+		<img src="{{ user.bild }}" class="align-self-center mr-3" style="width:60px">
+	{% else %}
+		<img src="/assets/teamplaner/images/user.png" class="align-self-center mr-3" style="width:60px">
+	{% endif %}
+	<div class="media-body">
+		<h4>{{ user.vorname }} {{ user.nachname }}</h4>
+		<p>{{ user.position }}, {{ user.nummer }}</p>
+	</div>
+</div>
+<hr>
