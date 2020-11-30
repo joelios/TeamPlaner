@@ -21,5 +21,16 @@ def get_data():
 					"dependencies": ["Team"]
 				}
 			]
+		},
+		{
+			"label": _("Events"),
+			"items": [
+				{
+					"type": "doctype",
+					"name": "TP Event",
+					"dependencies": ["Team"],
+					"label": "Event"
+				}
+			]
 		}
 	]

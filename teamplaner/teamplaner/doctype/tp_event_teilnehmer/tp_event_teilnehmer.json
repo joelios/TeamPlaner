@@ -1,0 +1,74 @@
+{
+ "creation": "2020-11-30 13:52:49.103612",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mitglied",
+  "user",
+  "status",
+  "bild",
+  "vorname",
+  "nachname",
+  "bemerkung"
+ ],
+ "fields": [
+  {
+   "fieldname": "mitglied",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Mitglied",
+   "options": "Mitglied",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "mitglied.user_id",
+   "fieldname": "user",
+   "fieldtype": "Data",
+   "label": "User"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Anwesend\nAbwesend\nVersp\u00e4tet",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "mitglied.bild",
+   "fieldname": "bild",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Bild"
+  },
+  {
+   "fetch_from": "mitglied.vorname",
+   "fieldname": "vorname",
+   "fieldtype": "Data",
+   "label": "Vorname"
+  },
+  {
+   "fetch_from": "mitglied.nachname",
+   "fieldname": "nachname",
+   "fieldtype": "Data",
+   "label": "Nachname"
+  },
+  {
+   "fieldname": "bemerkung",
+   "fieldtype": "Data",
+   "label": "Bemerkung"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-11-30 16:09:45.060868",
+ "modified_by": "Administrator",
+ "module": "TeamPlaner",
+ "name": "TP Event Teilnehmer",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

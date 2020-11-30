@@ -10,6 +10,10 @@
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
+	<div class="container" style="height: 30px;"></div>
+	{% for event in events %}
+		{% include "templates/includes/ereignisse/ereigniss.html" %}
+	{% endfor %}
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}
@@ -18,4 +22,30 @@
 	<script>
 		{% include "templates/includes/msmroverlay/msmroverlay.js" %}
 	</script>
+	<script>
+		function myMaps() {
+			{% for event in events %}
+				var mapProp_{{ event.name }} = {
+					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
+					zoom:15,
+					disableDefaultUI: true
+				};
+				var map_{{ event.name }} = new google.maps.Map(document.getElementById("googleMap-{{ event.name }}"),mapProp_{{ event.name }});
+				var marker_{{ event.name }} = new google.maps.Marker({position: mapProp_{{ event.name }}.center});
+				marker_{{ event.name }}.setMap(map_{{ event.name }});
+				
+				var mapProp_{{ event.name }}_modal = {
+					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
+					zoom:15,
+					disableDefaultUI: true
+				};
+				var map_{{ event.name }}_modal = new google.maps.Map(document.getElementById("googleMap-{{ event.name }}-modal"),mapProp_{{ event.name }}_modal);
+				var marker_{{ event.name }}_modal = new google.maps.Marker({position: mapProp_{{ event.name }}_modal.center});
+				marker_{{ event.name }}_modal.setMap(map_{{ event.name }}_modal);
+			{% endfor %}
+		}
+	</script>
+	{% for event in events %}
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoO--EjDiFBrrcNhxJHo67pOAtz0WPe1k&callback=myMaps"></script>
+	{% endfor %}
 {% endblock %}

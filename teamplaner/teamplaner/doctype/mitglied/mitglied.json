@@ -98,7 +98,7 @@
   }
  ],
  "image_field": "bild",
- "modified": "2020-11-18 13:00:25.441942",
+ "modified": "2020-11-30 13:57:46.873089",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Mitglied",
@@ -118,6 +118,7 @@
   }
  ],
  "quick_entry": 1,
+ "search_fields": "vorname,nachname,user_id",
  "sort_field": "modified",
  "sort_order": "DESC",
  "track_changes": 1

@@ -1,0 +1,134 @@
+{
+ "creation": "2020-11-30 11:03:59.559192",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_eckdaten",
+  "typ",
+  "event_date",
+  "event_from",
+  "cb_1",
+  "team",
+  "event_destination",
+  "event_to",
+  "section_google",
+  "lat",
+  "lng",
+  "section_description",
+  "event_description",
+  "section_teilnehmer",
+  "teilnehmer"
+ ],
+ "fields": [
+  {
+   "fieldname": "typ",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Typ",
+   "options": "Training\nMatch\nEvent",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_eckdaten",
+   "fieldtype": "Section Break",
+   "label": "Eckdaten"
+  },
+  {
+   "fieldname": "event_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Am",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_from",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Von",
+   "reqd": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "event_destination",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Wo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "event_to",
+   "fieldtype": "Time",
+   "label": "Bis",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_description",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "event_description",
+   "fieldtype": "Text",
+   "label": "Bemerkungen"
+  },
+  {
+   "fieldname": "team",
+   "fieldtype": "Link",
+   "label": "Team",
+   "options": "Team"
+  },
+  {
+   "fieldname": "section_teilnehmer",
+   "fieldtype": "Section Break",
+   "label": "Teilnehmer"
+  },
+  {
+   "fieldname": "teilnehmer",
+   "fieldtype": "Table",
+   "label": "Teilnehmer",
+   "options": "TP Event Teilnehmer"
+  },
+  {
+   "fieldname": "section_google",
+   "fieldtype": "Section Break",
+   "label": "Google Maps"
+  },
+  {
+   "fieldname": "lat",
+   "fieldtype": "Data",
+   "label": "L\u00e4ngengrad",
+   "reqd": 1
+  },
+  {
+   "fieldname": "lng",
+   "fieldtype": "Data",
+   "label": "Breitengrad",
+   "reqd": 1
+  }
+ ],
+ "modified": "2020-11-30 16:16:11.756701",
+ "modified_by": "Administrator",
+ "module": "TeamPlaner",
+ "name": "TP Event",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
