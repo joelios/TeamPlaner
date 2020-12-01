@@ -22,8 +22,8 @@
 	<div id="event-{{ event.name }}" class="col-3" style="margin-bottom: 10px;">
 		<div style="min-height: 15vh;">
 			<center>
-				<p style="font-size: 30px; margin-bottom: 0.5rem;"><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d') }}</b></p>
-				{{ frappe.utils.get_datetime(event.event_date).strftime('%b') }}<br>{{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }}
+				<p style="font-size: 30px; margin-bottom: 0.5rem; color: white;"><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d') }}</b></p>
+				<div style="color: white;">{{ frappe.utils.get_datetime(event.event_date).strftime('%b') }}<br>{{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }}</div>
 			</center>
 		</div>
 	</div>
@@ -78,7 +78,12 @@
 		</div>
 		<div class="col-9"></div>
 	{% endif %}
-	<div class="col-9"></div>
+	<div class="col-3" style="min-height: 40px;">
+		<center>
+			<p style="color: white;"><b>{{ event.typ }}</b></p>
+		</center>
+	</div>
+	<div class="col-6"></div>
 	<div class="col-3">
 		<center>
 			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="border-radius: 50%;"><i class="fas fa-info-circle"></i></button>
@@ -139,9 +144,9 @@
 				</div>
 				{% for teilnehmer in event.teilnehmer %}
 					{% if teilnehmer.status == 'Abwesend' %}
-					<div class="col-12">
-						<div class="media border p-3">
-							<img src="{{teilnehmer.bild }}" class="mr-3 mt-3 rounded-circle" style="width: 60px; border: 3px solid #c82333;">
+					<div class="col-12" style="margin-bottom: 5px;">
+						<div class="media border" style="padding: 0.1rem !important;">
+							<img src="{{teilnehmer.bild }}" class="align-self-center mr-3 rounded-circle" style="width: 60px; border: 3px solid #c82333;">
 							<div class="media-body">
 								<p>{{ teilnehmer.vorname }} {{ teilnehmer.nachname }}<br>{{ teilnehmer.bemerkung }}</p>
 							</div>
