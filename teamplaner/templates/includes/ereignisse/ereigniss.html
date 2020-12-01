@@ -20,7 +20,7 @@
 <!-- event card -->
 <div class="row" style=" background-color: {{ vars.bg_color }}; border-radius: 10px; padding-top: 15px; padding-bottom: 15px;">
 	<div id="event-{{ event.name }}" class="col-3" style="margin-bottom: 10px;">
-		<div style=" height: 15vh;">
+		<div style="min-height: 15vh;">
 			<center>
 				<p style="font-size: 30px; margin-bottom: 0.5rem;"><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d') }}</b></p>
 				{{ frappe.utils.get_datetime(event.event_date).strftime('%b') }}<br>{{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }}
@@ -28,7 +28,7 @@
 		</div>
 	</div>
 	<div class="col-9">
-		<div id="googleMap-{{ event.name }}" style="width: 100%; height: 15vh; border-radius: 10px;"></div>
+		<div id="googleMap-{{ event.name }}" style="width: 100%; min-height: 15vh; border-radius: 10px;"></div>
 	</div>
 	<div class="col-3" style="min-height: 40px;">
 		<center>
