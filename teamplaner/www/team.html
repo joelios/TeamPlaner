@@ -12,9 +12,9 @@
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 15px;"></div>
 	{% if team_img %}
-		<center><img src="{{ team_img }}"></center>
+		<center><img src="{{ team_img }}" style="border-radius: 10px;"></center>
 	{% else %}
-		<center><img src="/assets/teamplaner/images/team.png"></center>
+		<center><img src="/assets/teamplaner/images/team.png" style="border-radius: 10px;"></center>
 	{% endif %}
 	<hr>
 	{% if users %}
@@ -25,9 +25,9 @@
 		{% include "templates/includes/team/team_card_empty.html" %}
 	{% endif %}
 	{% if staff_img %}
-		<center><img src="{{ staff_img }}"></center>
+		<center><img src="{{ staff_img }}" style="border-radius: 10px;"></center>
 	{% else %}
-		<center><img src="/assets/teamplaner/images/team.png"></center>
+		<center><img src="/assets/teamplaner/images/team.png" style="border-radius: 10px;"></center>
 	{% endif %}
 	<div class="container" style="height: 15px;"></div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
