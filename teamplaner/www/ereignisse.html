@@ -26,23 +26,41 @@
 	<script>
 		function myMaps() {
 			{% for event in events %}
+				// map for card
 				var mapProp_{{ event.name }} = {
 					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
-					zoom:15,
-					disableDefaultUI: true
+					zoom:14,
+					disableDefaultUI: false
 				};
 				var map_{{ event.name }} = new google.maps.Map(document.getElementById("googleMap-{{ event.name }}"),mapProp_{{ event.name }});
 				var marker_{{ event.name }} = new google.maps.Marker({position: mapProp_{{ event.name }}.center});
 				marker_{{ event.name }}.setMap(map_{{ event.name }});
 				
+				// map for info modal
 				var mapProp_{{ event.name }}_modal = {
 					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
-					zoom:15,
-					disableDefaultUI: true
+					zoom:14,
+					disableDefaultUI: false
 				};
 				var map_{{ event.name }}_modal = new google.maps.Map(document.getElementById("googleMap-{{ event.name }}-modal"),mapProp_{{ event.name }}_modal);
 				var marker_{{ event.name }}_modal = new google.maps.Marker({position: mapProp_{{ event.name }}_modal.center});
 				marker_{{ event.name }}_modal.setMap(map_{{ event.name }}_modal);
+				
+				// marker popup card
+				var infowindow_{{ event.name }} = new google.maps.InfoWindow({
+				  content: '{{ event.event_destination or '' }}'
+				});
+				google.maps.event.addListener(marker_{{ event.name }}, 'click', function() {
+				  infowindow_{{ event.name }}.open(map_{{ event.name }},marker_{{ event.name }});
+				});
+				
+				// marker popup modal
+				var infowindow_{{ event.name }}_modal = new google.maps.InfoWindow({
+				  content: '{{ event.event_destination }}'
+				});
+				google.maps.event.addListener(marker_{{ event.name }}_modal, 'click', function() {
+				  infowindow_{{ event.name }}_modal.open(map_{{ event.name }}_modal,marker_{{ event.name }}_modal);
+				});
 			{% endfor %}
 		}
 	</script>
