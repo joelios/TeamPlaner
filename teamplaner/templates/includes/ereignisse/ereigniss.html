@@ -16,9 +16,10 @@
 		{% endif %}
 	{% endif %}
 {% endfor %}
+<hr>
 <!-- event card -->
-<div class="row" style=" background-color: {{ vars.bg_color }}; border-radius: 10px;">
-	<div id="event-{{ event.name }}" class="col-3">
+<div class="row" style=" background-color: {{ vars.bg_color }}; border-radius: 10px; padding-top: 15px; padding-bottom: 15px;">
+	<div id="event-{{ event.name }}" class="col-3" style="margin-bottom: 10px;">
 		<div style=" height: 15vh;">
 			<center>
 				<p style="font-size: 30px; margin-bottom: 0.5rem;"><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d') }}</b></p>
@@ -27,11 +28,9 @@
 		</div>
 	</div>
 	<div class="col-9">
-		<div id="googleMap-{{ event.name }}" style="width: 100%; height: 15vh;"></div>
+		<div id="googleMap-{{ event.name }}" style="width: 100%; height: 15vh; border-radius: 10px;"></div>
 	</div>
-</div>
-<hr>
-<div class="row">
+	<hr>
 	{% if vars.mein_status != 'Abwesend' %}
 		<div class="col-12" style="margin-bottom: 5px;">
 			<center>
@@ -48,17 +47,17 @@
 	{% endif %}
 	<div class="col-4">
 		<center>
-			<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white;">{{ vars.anwesend }}</div>
+			<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
 		</center>
 	</div>
 	<div class="col-4">
 		<center>
-			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white;">{{ vars.verspaetet }}</div>
+			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
 		</center>
 	</div>
 	<div class="col-4">
 		<center>
-			<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white;">{{ vars.abwesend }}</div>
+			<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.abwesend }}</div>
 		</center>
 	</div>
 	<div class="col-12" style="margin-top: 5px;">
@@ -67,7 +66,7 @@
 		</center>
 	</div>
 </div>
-<hr>
+
 <!-- event modal -->
 <div class="modal fade" id="modal{{ event.name }}">
 	<div class="modal-dialog  modal-xl" style="margin: 0;">
@@ -168,7 +167,7 @@
 
 		<!-- Modal footer -->
 		<div class="modal-footer">
-			<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-danger" data-dismiss="modal">Schliessen</button>
 		</div>
 
 	</div>
