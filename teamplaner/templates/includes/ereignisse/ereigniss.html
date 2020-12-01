@@ -30,39 +30,74 @@
 	<div class="col-9">
 		<div id="googleMap-{{ event.name }}" style="width: 100%; height: 15vh; border-radius: 10px;"></div>
 	</div>
-	<hr>
-	{% if vars.mein_status != 'Abwesend' %}
-		<div class="col-12" style="margin-bottom: 5px;">
-			<center>
-				<button type="button" class="btn btn-danger">Abmelden</button>
-				<button type="button" class="btn btn-secondary ml-auto">Komme zu spät</button>
-			</center>
-		</div>
-	{% else %}
-		<div class="col-12" style="margin-bottom: 5px;">
-			<center>
-				<button type="button" class="btn btn-success">Anmelden</button>
-			</center>
-		</div>
-	{% endif %}
-	<div class="col-4">
+	
+	<!-- <div class="col-3" style="min-height: 40px;">
 		<center>
 			<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
 		</center>
 	</div>
-	<div class="col-4">
+	<div class="col-9"></div> -->
+	
+	<div class="col-3" style="min-height: 40px;">
 		<center>
 			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
 		</center>
 	</div>
-	<div class="col-4">
+	<div class="col-9"></div>
+	{% if vars.mein_status != 'Abwesend' %}
+		<div class="col-3" style="min-height: 40px;">
+			<center>
+				<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
+			</center>
+		</div>
+		<div class="col-6" style="margin-bottom: 5px;">
+			<center>
+				<button type="button" class="btn btn-danger" style="color: white;">Abmelden</button>
+			</center>
+		</div>
+		<div class="col-3"></div>
+		<div class="col-3" style="min-height: 40px;">
+			<center>
+				<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.abwesend }}</div>
+			</center>
+		</div>
+		<div class="col-6" style="margin-bottom: 5px;">
+			<center>
+				<button type="button" class="btn btn-secondary" style="color: white;">Komme zu spät</button>
+			</center>
+		</div>
+		<div class="col-3"></div>
+	{% else %}
+		<div class="col-3" style="min-height: 40px;">
+			<center>
+				<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
+			</center>
+		</div>
+		<div class="col-6" style="margin-bottom: 5px;">
+			<center>
+				<button type="button" class="btn btn-success" style="color: white;">Anmelden</button>
+			</center>
+		</div>
+		<div class="col-3"></div>
+		<div class="col-3" style="min-height: 40px;">
+			<center>
+				<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.abwesend }}</div>
+			</center>
+		</div>
+		<div class="col-9"></div>
+	{% endif %}
+	
+	
+	
+	<!-- <div class="col-3" style="min-height: 40px;">
 		<center>
 			<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.abwesend }}</div>
 		</center>
-	</div>
-	<div class="col-12" style="margin-top: 5px;">
+	</div> -->
+	<div class="col-9"></div>
+	<div class="col-3">
 		<center>
-			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}"><i class="fas fa-caret-down"></i> Details <i class="fas fa-caret-down"></i></button>
+			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="border-radius: 50%;"><i class="fas fa-info-circle"></i></button>
 		</center>
 	</div>
 </div>
