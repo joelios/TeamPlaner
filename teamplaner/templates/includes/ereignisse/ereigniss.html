@@ -18,7 +18,7 @@
 {% endfor %}
 
 <!-- event card -->
-<div class="row" style=" background-color: {{ vars.bg_color }}; padding-top: 15px; padding-bottom: 15px;">
+<div class="row" style=" background-color: {{ vars.bg_color }}; padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #36414c;">
 	<div id="event-{{ event.name }}" class="col-3" style="margin-bottom: 10px;">
 		<div style="min-height: 15vh;">
 			<center>
@@ -31,20 +31,20 @@
 		<div id="googleMap-{{ event.name }}" style="width: 100%; min-height: 15vh; border-radius: 10px;"></div>
 	</div>
 	<div class="col-3" style="min-height: 40px;">
-		<center>
-			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
-		</center>
-	</div>
-	<div class="col-9"></div>
-	{% if vars.mein_status != 'Abwesend' %}
-		<div class="col-3" style="min-height: 40px;">
 			<center>
 				<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
 			</center>
 		</div>
+	<div class="col-9"></div>
+	{% if vars.mein_status != 'Abwesend' %}
+		<div class="col-3" style="min-height: 40px;">
+		<center>
+			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
+		</center>
+	</div>
 		<div class="col-6" style="margin-bottom: 5px;">
 			<center>
-				<button type="button" class="btn btn-danger" style="color: white;">Abmelden</button>
+				<button type="button" class="btn btn-danger" style="color: white;" onclick="abmelden('{{ event.name }}');">Abmelden</button>
 			</center>
 		</div>
 		<div class="col-3"></div>
@@ -55,19 +55,19 @@
 		</div>
 		<div class="col-6" style="margin-bottom: 5px;">
 			<center>
-				<button type="button" class="btn btn-secondary" style="color: white;">Komme zu spät</button>
+				<button type="button" class="btn btn-secondary" style="color: white;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
 			</center>
 		</div>
 		<div class="col-3"></div>
 	{% else %}
 		<div class="col-3" style="min-height: 40px;">
-			<center>
-				<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
-			</center>
-		</div>
+		<center>
+			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
+		</center>
+	</div>
 		<div class="col-6" style="margin-bottom: 5px;">
 			<center>
-				<button type="button" class="btn btn-success" style="color: white;">Anmelden</button>
+				<button type="button" class="btn btn-success" style="color: white;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
 			</center>
 		</div>
 		<div class="col-3"></div>
@@ -160,14 +160,14 @@
 				{% if vars.mein_status != 'Abwesend' %}
 					<div class="col-12" style="margin-bottom: 5px; margin-top: 5px;">
 						<center>
-							<button type="button" class="btn btn-danger">Abmelden</button>
-							<button type="button" class="btn btn-secondary ml-auto">Komme zu spät</button>
+							<button type="button" class="btn btn-danger" onclick="abmelden('{{ event.name }}');" data-dismiss="modal">Abmelden</button>
+							<button type="button" class="btn btn-secondary ml-auto" onclick="komme_zu_spaet('{{ event.name }}');" data-dismiss="modal">Komme zu spät</button>
 						</center>
 					</div>
 				{% else %}
 					<div class="col-12" style="margin-bottom: 5px; margin-top: 5px;">
 						<center>
-							<button type="button" class="btn btn-success">Anmelden</button>
+							<button type="button" class="btn btn-success" onclick="anmelden('{{ event.name }}');" data-dismiss="modal">Anmelden</button>
 						</center>
 					</div>
 				{% endif %}
