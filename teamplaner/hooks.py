@@ -28,7 +28,7 @@ web_include_js = "/assets/teamplaner/js/teamplaner.js"
 # app_include_js = "/assets/teamplaner/js/teamplaner.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/teamplaner/css/teamplaner.css"
+web_include_css = "/assets/teamplaner/css/teamplaner.css"
 # web_include_js = "/assets/teamplaner/js/teamplaner.js"
 
 # include js in page
