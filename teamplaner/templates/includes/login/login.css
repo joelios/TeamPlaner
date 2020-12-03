@@ -137,3 +137,9 @@ p {
   position: absolute;
   z-index: 2;
 }
+
+.btn-primary {
+    color: #fff;
+    background-color: #36414c;
+    border-color: #36414c;
+}
