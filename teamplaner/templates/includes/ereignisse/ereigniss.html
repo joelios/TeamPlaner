@@ -41,12 +41,20 @@
 		<center>
 			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
 		</center>
-	</div>
-		<div class="col-6" style="margin-bottom: 5px;">
-			<center>
-				<button type="button" class="btn btn-danger" style="color: white;" onclick="abmelden('{{ event.name }}');">Abmelden</button>
-			</center>
 		</div>
+		{% if vars.mein_status == 'Anwesend' %}
+			<div class="col-6" style="margin-bottom: 5px;">
+				<center>
+					<button type="button" class="btn btn-secondary" style="color: white; width: 100%;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
+				</center>
+			</div>
+		{% else %}
+			<div class="col-6" style="margin-bottom: 5px;">
+				<center>
+					<button type="button" class="btn btn-success" style="color: white; width: 100%;" onclick="komme_puenktlich('{{ event.name }}');">Komme pünktlich</button>
+				</center>
+			</div>
+		{% endif %}
 		<div class="col-3"></div>
 		<div class="col-3" style="min-height: 40px;">
 			<center>
@@ -55,7 +63,7 @@
 		</div>
 		<div class="col-6" style="margin-bottom: 5px;">
 			<center>
-				<button type="button" class="btn btn-secondary" style="color: white;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
+				<button type="button" class="btn btn-danger" style="color: white; width: 100%;" onclick="abmelden('{{ event.name }}');">Abmelden</button>
 			</center>
 		</div>
 		<div class="col-3"></div>
@@ -67,7 +75,7 @@
 	</div>
 		<div class="col-6" style="margin-bottom: 5px;">
 			<center>
-				<button type="button" class="btn btn-success" style="color: white;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
+				<button type="button" class="btn btn-success" style="color: white; width: 100%;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
 			</center>
 		</div>
 		<div class="col-3"></div>
