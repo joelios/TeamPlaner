@@ -1,6 +1,7 @@
 .card {
-	margin-top: 10px;
-	height: 15vh;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	height: 100%;
 }
 .card.left {
 	margin-left: 10px;
@@ -21,6 +22,7 @@
 }
 .col-6 {
 	padding: 0 0 0 0 !important;
+	margin-bottom: 5px;
 }
 .fixed-table {
 	width: 50%;
