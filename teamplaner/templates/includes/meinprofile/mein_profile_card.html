@@ -1,28 +1,39 @@
-<div class="media">
-	{% if user_stamm.bild %}
-		<img src="{{ user_stamm.bild }}" width="100">
-	{% else %}
-		<img src="/assets/teamplaner/images/user.png" width="100">
-	{% endif %}
-	<div class="media-body">
-		<h4 style="padding-left: 15px;">{{ user_stamm.vorname }} {{ user_stamm.nachname }}</h4>
-		<p style="padding-left: 15px;">
-			{{ user_stamm.position }}, {{ user_stamm.nummer }}<br>
-			{{ user_stamm.lizenz }}<br>
-			{{ user_stamm.team }}
-		</p>
+<div class="row">
+	<div class="col-sm-6 col-xs-12">
+		<div class="media">
+			{% if user_stamm.bild %}
+				<img src="{{ user_stamm.bild }}" width="100">
+			{% else %}
+				<img src="/assets/teamplaner/images/user.png" width="100">
+			{% endif %}
+			<div class="media-body">
+				<h4 style="padding-left: 15px;">{{ user_stamm.vorname }} {{ user_stamm.nachname }}</h4>
+				<p style="padding-left: 15px;">
+					{{ user_stamm.position }}, {{ user_stamm.nummer }}<br>
+					{{ user_stamm.lizenz }}<br>
+					{{ user_stamm.team }}
+				</p>
+				<p class="d-sm-none" style="padding-left: 15px;">
+					{{ user_stamm.adresse|replace(", ", "<br>") }}<br>
+					{{ user_stamm.user_id }}<br>
+					{{ user_stamm.mobile }}<br>
+					{{ user_stamm.geburtsdatum }}
+				</p>
+			</div>
+		</div>
 	</div>
-</div>
-<hr>
-<div class="media">
-	<div class="media-body">
-		<h4 style="padding-left: 15px;"><i class="far fa-address-card"></i></h4>
-		<p style="padding-left: 15px;">
-			{{ user_stamm.adresse }}<br>
-			{{ user_stamm.user_id }}<br>
-			{{ user_stamm.mobile }}<br>
-			{{ user_stamm.geburtsdatum }}
-		</p>
+	<div class="d-none d-sm-block col-sm-6">
+		<div class="media">
+			<h4 style="padding-left: 15px;"><i class="far fa-address-card"></i></h4>
+			<div class="media-body">
+				<p style="padding-left: 15px;">
+					{{ user_stamm.adresse|replace(", ", "<br>") }}<br>
+					{{ user_stamm.user_id }}<br>
+					{{ user_stamm.mobile }}<br>
+					{{ user_stamm.geburtsdatum }}
+				</p>
+			</div>
+		</div>
 	</div>
 </div>
 <hr>
