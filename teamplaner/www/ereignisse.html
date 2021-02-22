@@ -12,8 +12,8 @@
 	{% include "templates/navbar_top.html" %}
 	{% for event in events %}
 		{% include "templates/includes/ereignisse/ereigniss.html" %}
+		<hr>
 	{% endfor %}
-	<hr>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}
@@ -26,15 +26,23 @@
 		function myMaps() {
 			{% for event in events %}
 				// map for card
-				var mapProp_{{ event.name }} = {
+				/*var mapProp_{{ event.name }} = {
 					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
 					zoom:14,
 					disableDefaultUI: false
 				};
 				var map_{{ event.name }} = new google.maps.Map(document.getElementById("googleMap-{{ event.name }}"),mapProp_{{ event.name }});
 				var marker_{{ event.name }} = new google.maps.Marker({position: mapProp_{{ event.name }}.center});
-				marker_{{ event.name }}.setMap(map_{{ event.name }});
+				marker_{{ event.name }}.setMap(map_{{ event.name }});*/
 				
+				// marker popup card
+				/*var infowindow_{{ event.name }} = new google.maps.InfoWindow({
+				  content: '{{ event.event_destination or '' }}'
+				});
+				google.maps.event.addListener(marker_{{ event.name }}, 'click', function() {
+				  infowindow_{{ event.name }}.open(map_{{ event.name }},marker_{{ event.name }});
+				});*/
+			
 				// map for info modal
 				var mapProp_{{ event.name }}_modal = {
 					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
@@ -44,14 +52,6 @@
 				var map_{{ event.name }}_modal = new google.maps.Map(document.getElementById("googleMap-{{ event.name }}-modal"),mapProp_{{ event.name }}_modal);
 				var marker_{{ event.name }}_modal = new google.maps.Marker({position: mapProp_{{ event.name }}_modal.center});
 				marker_{{ event.name }}_modal.setMap(map_{{ event.name }}_modal);
-				
-				// marker popup card
-				var infowindow_{{ event.name }} = new google.maps.InfoWindow({
-				  content: '{{ event.event_destination or '' }}'
-				});
-				google.maps.event.addListener(marker_{{ event.name }}, 'click', function() {
-				  infowindow_{{ event.name }}.open(map_{{ event.name }},marker_{{ event.name }});
-				});
 				
 				// marker popup modal
 				var infowindow_{{ event.name }}_modal = new google.maps.InfoWindow({

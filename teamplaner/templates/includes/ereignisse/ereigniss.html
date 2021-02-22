@@ -1,3 +1,40 @@
+<style>
+	.swiper-container {
+		width: 100%;
+		height: 100%;
+	}
+	.swiper-slide {
+		font-size: 18px;
+		background: #fff;
+		padding-top: 10px;
+	}
+	.menu {
+		min-width: 100px;
+		width: 70%;
+		max-width: 320px;
+		background-color: #36414c;
+		color: #fff;
+	}
+	.content {
+		width: 100%;
+		padding-left: 75px;
+	}
+	.menu-button {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		padding: 15px;
+		cursor: pointer;
+		-webkit-transition: .3s;
+		transition: .3s;
+		background-color: #36414c;
+	}
+	.container {
+		margin-right: 0px !important;
+		margin-left: 0px !important;
+	}
+</style>
+
 {% set vars = {'anwesend': 0, 'abwesend': 0, 'verspaetet': 0, 'mein_status': 'Abwesend', 'bg_color': '#c82333'} %}
 {% for teilnehmer in event.teilnehmer %}
 	{% if teilnehmer.status == 'Anwesend' %}
@@ -17,87 +54,67 @@
 	{% endif %}
 {% endfor %}
 
-<!-- event card -->
-<div class="row" style=" background-color: {{ vars.bg_color }}; padding-top: 15px; padding-bottom: 15px; border-bottom: 1px solid #36414c;">
-	<div id="event-{{ event.name }}" class="col-3" style="margin-bottom: 10px;">
-		<div style="min-height: 15vh;">
-			<center>
-				<p style="font-size: 30px; margin-bottom: 0.5rem; color: white;"><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d') }}</b></p>
-				<div style="color: white;">{{ frappe.utils.get_datetime(event.event_date).strftime('%b') }}<br>{{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }}</div>
-			</center>
-		</div>
-	</div>
-	<div class="col-9">
-		<div id="googleMap-{{ event.name }}" style="width: 100%; min-height: 15vh; border-radius: 10px;"></div>
-	</div>
-	<div class="col-3" style="min-height: 40px;">
-			<center>
-				<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.anwesend }}</div>
-			</center>
-		</div>
-	<div class="col-9"></div>
-	{% if vars.mein_status != 'Abwesend' %}
-		<div class="col-3" style="min-height: 40px;">
-		<center>
-			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
-		</center>
-		</div>
-		{% if vars.mein_status == 'Anwesend' %}
-			<div class="col-6" style="margin-bottom: 5px;">
-				<center>
-					<button type="button" class="btn btn-secondary" style="color: white; width: 100%;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
-				</center>
+
+
+<div class="row">
+	<!-- Swiper -->
+	<div class="swiper-container" style="height: 200px;">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide menu">
+				{% if vars.mein_status != 'Abwesend' %}
+					{% if vars.mein_status == 'Anwesend' %}
+						<div>
+							<button type="button" class="btn btn-secondary" style="color: white; width: 100%; margin-top: 10px;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
+						</div>
+					{% else %}
+						<div>
+							<button type="button" class="btn btn-success" style="color: white; width: 100%; margin-top: 10px;" onclick="komme_puenktlich('{{ event.name }}');">Komme pünktlich</button>
+						</div>
+					{% endif %}
+					<div>
+						<button type="button" class="btn btn-danger" style="color: white; width: 100%; margin-top: 10px;" data-toggle="modal" data-target="#abmeldenmodal{{ event.name }}">Abmelden</button>
+					</div>
+				{% else %}
+					<div>
+						<button type="button" class="btn btn-success" style="color: white; width: 100%; margin-top: 10px;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
+					</div>
+				{% endif %}
+				<div>
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="color: white; width: 100%; margin-top: 10px;"><i class="fas fa-info-circle"></i></button>
+				</div>
 			</div>
-		{% else %}
-			<div class="col-6" style="margin-bottom: 5px;">
-				<center>
-					<button type="button" class="btn btn-success" style="color: white; width: 100%;" onclick="komme_puenktlich('{{ event.name }}');">Komme pünktlich</button>
-				</center>
+			<div class="swiper-slide content">
+				<div class="menu-button" style="{% if vars.mein_status != 'Abwesend' %}{% if vars.mein_status == 'Anwesend' %}background-color: #218838;{% else %}background-color: #5a6268;{% endif %}{% else %}background-color: #c82333;{% endif %}">
+					<div><center><i class="fas fa-angle-double-right" style="color: white;"></i></center></div>
+					<div style="min-height: 40px; margin-top: 5px;">
+						<center>
+							<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; border: 1px solid white; margin-bottom: 5px;">{{ vars.anwesend }}</div>
+							<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white; margin-bottom: 5px;">{{ vars.verspaetet }}</div>
+							<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white; margin-bottom: 5px;">{{ vars.abwesend }}</div>
+						</center>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-5">
+						<b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d %b') }}</b><br>
+						{{ event.typ }}<br>
+						<p>
+							<i class="fas fa-map-marked-alt"></i> {{ event.event_destination }}<br>
+							<i class="fas fa-hourglass-start"></i> {{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }}<br>
+							<i class="fas fa-hourglass-end"></i> {{ frappe.utils.get_time(event.event_to).strftime('%H:%M') }}
+						</p>
+					</div>
+					<div class="col-7">
+						{{ event.event_description or 'Es sind keine Informationen hinterlegt.' }}
+					</div>
+				</div>
 			</div>
-		{% endif %}
-		<div class="col-3"></div>
-		<div class="col-3" style="min-height: 40px;">
-			<center>
-				<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.abwesend }}</div>
-			</center>
 		</div>
-		<div class="col-6" style="margin-bottom: 5px;">
-			<center>
-				<button type="button" class="btn btn-danger" style="color: white; width: 100%;" data-toggle="modal" data-target="#abmeldenmodal{{ event.name }}">Abmelden</button>
-			</center>
-		</div>
-		<div class="col-3"></div>
-	{% else %}
-		<div class="col-3" style="min-height: 40px;">
-		<center>
-			<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.verspaetet }}</div>
-		</center>
-	</div>
-		<div class="col-6" style="margin-bottom: 5px;">
-			<center>
-				<button type="button" class="btn btn-success" style="color: white; width: 100%;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
-			</center>
-		</div>
-		<div class="col-3"></div>
-		<div class="col-3" style="min-height: 40px;">
-			<center>
-				<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; border: 1px solid white;">{{ vars.abwesend }}</div>
-			</center>
-		</div>
-		<div class="col-9"></div>
-	{% endif %}
-	<div class="col-3" style="min-height: 40px;">
-		<center>
-			<p style="color: white;"><b>{{ event.typ }}</b></p>
-		</center>
-	</div>
-	<div class="col-6"></div>
-	<div class="col-3">
-		<center>
-			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="border-radius: 50%;"><i class="fas fa-info-circle"></i></button>
-		</center>
 	</div>
 </div>
+
+
+
 
 <!-- abmelden modal -->
 <div class="modal fade" id="abmeldenmodal{{ event.name }}">
@@ -243,3 +260,38 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
+
+<!-- Initialize Swiper -->
+	<script>
+		var menuButton = document.querySelector('.menu-button');
+		var openMenu = function () {};
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: 'auto',
+			initialSlide: 1,
+			resistanceRatio: 0,
+			slideToClickedSlide: true,
+			on: {
+				slideChangeTransitionStart: function () {
+					var slider = this;
+					if (slider.activeIndex === 0) {
+						menuButton.classList.add('cross');
+						// required because of slideToClickedSlide
+						menuButton.removeEventListener('click', openMenu, true);
+					} else {
+						menuButton.classList.remove('cross');
+					}
+				}
+				, slideChangeTransitionEnd: function () {
+					var slider = this;
+					if (slider.activeIndex === 1) {
+						menuButton.addEventListener('click', openMenu, true);
+					}
+				},
+			}
+		});
+	</script>
