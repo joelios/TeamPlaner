@@ -1,3 +1,30 @@
+{% if next_game %}
+<div class="col-6">
+	<div class="card left">
+		<div class="card-body">
+			<center>
+				Next Game
+				<table class="text-muted" style="width: 100%;">
+					<tbody>
+						<tr>
+							<td style="text-align: center;"><i class="fas fa-info"></i></td>
+							<td style="text-align: center;">{{ next_game.gegner }}</td>
+						</tr>
+						<tr>
+							<td style="text-align: center;"><i class="fas fa-map-marker-alt"></i></td>
+							<td style="text-align: center;">{{ next_game.event_destination }}</td>
+						</tr>
+						<tr>
+							<td style="text-align: center;"><i class="fas fa-calendar-day"> <i class="far fa-clock"></i></td>
+							<td style="text-align: center;">{{ frappe.utils.get_datetime(next_game.event_date).strftime('%d.%m.%y') }} {{ frappe.utils.get_time(next_game.event_from).strftime('%H:%M') }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</center>
+		</div>
+	</div>
+</div>
+{% else %}
 <div class="col-6">
 	<div class="card right">
 		<div class="card-body">
@@ -6,3 +33,4 @@
 		</div>
 	</div>
 </div>
+{% endif %}
