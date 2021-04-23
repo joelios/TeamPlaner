@@ -16,8 +16,11 @@ app_license = "MIT"
 base_template_path = "/teamplaner/templates/base.html"
 home_page = "welcome"
 website_route_rules = [
-	{"from_route": "/me", "to_route": "dashboard"}
+	#{"from_route": "/me", "to_route": "dashboard"}
 ]
+# website_redirect = [
+	# {"source": "/dashboard", "target": "https://teamplaner.app/dashboard"}
+# ]
 web_include_js = "/assets/teamplaner/js/teamplaner.js"
 
 # Includes in <head>
@@ -44,7 +47,7 @@ web_include_css = "/assets/teamplaner/css/teamplaner.css"
 # ----------
 
 # application home page (will override Website Settings)
-# home_page = "welcome"
+#home_page = "dashboard"
 
 # website user home page (by Role)
 # role_home_page = {

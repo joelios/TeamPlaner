@@ -10,6 +10,7 @@
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
+	<div class="container" style="height: 15px; margin-top: 60px;"></div>
 	{% for event in events %}
 		{% include "templates/includes/ereignisse/ereigniss.html" %}
 		<hr>
