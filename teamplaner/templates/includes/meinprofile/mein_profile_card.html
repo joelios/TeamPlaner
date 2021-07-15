@@ -17,7 +17,7 @@
 					{{ user_stamm.adresse|replace(", ", "<br>") }}<br>
 					{{ user_stamm.user_id }}<br>
 					{{ user_stamm.mobile }}<br>
-					{{ user_stamm.geburtsdatum }}
+					{{ frappe.utils.get_datetime(user_stamm.geburtsdatum).strftime('%d.%m.%Y') }}
 				</p>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 					{{ user_stamm.adresse|replace(", ", "<br>") }}<br>
 					{{ user_stamm.user_id }}<br>
 					{{ user_stamm.mobile }}<br>
-					{{ user_stamm.geburtsdatum }}
+					{{ frappe.utils.get_datetime(user_stamm.geburtsdatum).strftime('%d.%m.%Y') }}
 				</p>
 			</div>
 		</div>
