@@ -13,7 +13,7 @@ def get_context(context):
 		frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
 		
 	context['events'] = []
-	all_events = frappe.db.sql("""SELECT `name` FROM `tabTP Event` ORDER BY `event_date` ASC""", as_list=True)
+	all_events = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `event_date` > CURDATE() - INTERVAL 1 DAY ORDER BY `event_date` ASC""", as_list=True)
 	for event in all_events:
 		context['events'].append(frappe.get_doc("TP Event", event[0]))
 	return context

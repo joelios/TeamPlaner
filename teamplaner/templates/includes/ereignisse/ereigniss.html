@@ -61,6 +61,7 @@
 	<div class="swiper-container" style="height: 200px;">
 		<div class="swiper-wrapper">
 			<div class="swiper-slide menu">
+				{% if frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d') > frappe.utils.now() %}
 				{% if vars.mein_status != 'Abwesend' %}
 					{% if vars.mein_status == 'Anwesend' %}
 						<div>
@@ -78,6 +79,7 @@
 					<div>
 						<button type="button" class="btn btn-success" style="color: white; width: 100%; margin-top: 10px;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
 					</div>
+				{% endif %}
 				{% endif %}
 				<div>
 					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="color: white; width: 100%; margin-top: 10px;"><i class="fas fa-info-circle"></i></button>
@@ -211,11 +213,12 @@
 				</div>
 				{% endif %}
 				<div class="row">
+					{% if frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d') > frappe.utils.now() %}
 					{% if vars.mein_status != 'Abwesend' %}
 						{% if vars.mein_status == 'Anwesend' %}
 							<div class="col-12" style="margin-bottom: 5px; margin-top: 5px;">
 								<center>
-									<button type="button" class="btn btn-secondary ml-auto" style="color: white; width: 100%; margin-bottom: 5px;" onclick="komme_zu_spaet('{{ event.name }}');" data-dismiss="modal">Komme zu spät</button>
+									<button type="button" class="btn btn-secondary ml-auto" style="background-color: #74808b; color: white; width: 100%; margin-bottom: 5px;" onclick="komme_zu_spaet('{{ event.name }}');" data-dismiss="modal">Komme zu spät</button>
 									<button type="button" class="btn btn-danger" style="color: white; width: 100%;" data-dismiss="modal" data-toggle="modal" data-target="#abmeldenmodal{{ event.name }}">Abmelden</button>
 								</center>
 							</div>
@@ -234,6 +237,7 @@
 							</center>
 						</div>
 					{% endif %}
+				{% endif %}
 					<div class="col-4">
 						<center>
 							<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white;">{{ vars.anwesend }}</div>
