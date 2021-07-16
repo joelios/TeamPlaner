@@ -11,7 +11,27 @@
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 30px; margin-top: 60px;"></div>
-	<center><i class="fas fa-tools fa-9x"></i></center>
+	<center><h1>Statistiken</h1></center>
+	<table style="width: 100%;">
+		<thead>
+			<tr>
+				<th>Spieler</th>
+				<th style="text-align: center">Anwesend</th>
+				<th style="text-align: center">Abwesend</th>
+				<th style="text-align: center">Verspätet</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for user in table %}
+			<tr>
+				<td>{{ user.vorname }} {{ user.nachname }}</td>
+				<td style="text-align: center">{{ user.anwesend }}</td>
+				<td style="text-align: center">{{ user.abwesend }}</td>
+				<td style="text-align: center">{{ user.spaet }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}

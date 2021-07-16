@@ -3,23 +3,17 @@
 		<div class="card-body">
 			<center>
 				Präsenz
-				<!--<table class="text-muted" style="width: 100%; table-layout: fixed;">
+				<table class="text-muted" style="width: 100%; table-layout: fixed;">
 					<tbody>
+						{% for user in top_three %}
+						{% set percent = (100 / (user.anwesend + user.abwesend + user.spaet)) * (user.anwesend + user.spaet) %}
 						<tr>
-							<td class="cut-off" style="width: 80%;">Severin Schindlerdasgfagagagfgadfgadfg</td>
-							<td style="text-align: right;">100%</td>
+							<td class="cut-off" style="width: 80%;">{{ user.vorname }} {{ user.nachname }}</td>
+							<td style="text-align: right;">{{ percent|round(1) }}%</td>
 						</tr>
-						<tr>
-							<td class="cut-off">Joël Mesmer</td>
-							<td style="text-align: right;">95%</td>
-						</tr>
-						<tr>
-							<td class="cut-off">Andreas Christen</td>
-							<td style="text-align: right;">90%</td>
-						</tr>
+						{% endfor %}
 					</tbody>
-				</table>-->
-				<br><i class="fas fa-tools"></i>
+				</table>
 			</center>
 		</div>
 	</div>

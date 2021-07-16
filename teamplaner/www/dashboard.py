@@ -5,6 +5,7 @@
 from __future__ import unicode_literals
 import frappe
 from frappe import _
+from teamplaner.www.statistiken import get_top_three
 
 no_cache = 1
 
@@ -19,4 +20,5 @@ def get_context(context):
 	next_game = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `typ` = 'Match' ORDER BY `event_date` ASC LIMIT 1""", as_list=True)
 	if len(next_game) == 1:
 		context['next_game'] = frappe.get_doc("TP Event", next_game[0][0])
+	context['top_three'] = get_top_three()
 	return context

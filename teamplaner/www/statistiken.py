@@ -12,6 +12,8 @@ def get_context(context):
 	if frappe.session.user=='Guest':
 		frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
 		
+	context['table'] = get_praesenz_table()
+		
 def get_praesenz_table(limit=False):
 	filter = ''
 	if limit:
@@ -23,7 +25,7 @@ def get_praesenz_table(limit=False):
 								IFNULL(`tble_anw`.`anwesend`, 0) AS `anwesend`,
 								IFNULL(`tble_abw`.`abwesend`, 0) AS `abwesend`,
 								IFNULL(`tble_sp`.`spaet`, 0) AS `spaet`,
-								IFNULL((`anwesend` - `abwesend`), 0) AS `points`
+								(IFNULL(`tble_anw`.`anwesend`, 0) + IFNULL(`tble_sp`.`spaet`, 0) - IFNULL(`tble_abw`.`abwesend`, 0)) AS `points`
 							FROM `tabTP Event Teilnehmer` AS `tpet`
 							LEFT JOIN
 							(
