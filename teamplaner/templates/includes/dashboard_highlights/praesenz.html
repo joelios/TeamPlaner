@@ -8,7 +8,7 @@
 						{% for user in top_three %}
 						{% set percent = (100 / (user.anwesend + user.abwesend + user.spaet)) * (user.anwesend + user.spaet) %}
 						<tr>
-							<td class="cut-off" style="width: 80%;">{{ user.vorname }} {{ user.nachname }}</td>
+							<td class="cut-off" style="width: 70%;">{{ user.vorname }} {{ user.nachname }}</td>
 							<td style="text-align: right;">{{ percent|round(1) }}%</td>
 						</tr>
 						{% endfor %}

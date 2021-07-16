@@ -5,6 +5,17 @@
 		#nav-bottom-statistiken {
 			color: #FFD700 !important;
 		}
+		.fixed-table {
+			width: 90%;
+			margin-left: 5%;
+			margin-right: 5%;
+			table-layout: fixed;
+		}
+		.cut-off {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
 		{% include "templates/includes/msmroverlay/msmroverlay.css" %}
 	</style>
 {% endblock %}
@@ -12,19 +23,19 @@
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 30px; margin-top: 60px;"></div>
 	<center><h1>Statistiken</h1></center>
-	<table style="width: 100%;">
+	<table class="fixed-table">
 		<thead>
 			<tr>
-				<th>Spieler</th>
-				<th style="text-align: center">Anwesend</th>
-				<th style="text-align: center">Abwesend</th>
-				<th style="text-align: center">Verspätet</th>
+				<th style="width: 40%;">Spieler</th>
+				<th style="text-align: center;">Anw.</th>
+				<th style="text-align: center">Abw.</th>
+				<th style="text-align: center">Versp.</th>
 			</tr>
 		</thead>
 		<tbody>
 		{% for user in table %}
 			<tr>
-				<td>{{ user.vorname }} {{ user.nachname }}</td>
+				<td class="cut-off">{{ user.vorname }} {{ user.nachname }}</td>
 				<td style="text-align: center">{{ user.anwesend }}</td>
 				<td style="text-align: center">{{ user.abwesend }}</td>
 				<td style="text-align: center">{{ user.spaet }}</td>
@@ -32,6 +43,7 @@
 		{% endfor %}
 		</tbody>
 	</table>
+	<div class="container" style="height: 30px; margin-top: 60px;"></div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}
