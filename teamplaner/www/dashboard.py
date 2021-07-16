@@ -13,11 +13,11 @@ def get_context(context):
 	if frappe.session.user=='Guest':
 		frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
 	context['next_event'] = {}
-	next_event = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `event_date` > CURDATE() ORDER BY `event_date` ASC LIMIT 1""", as_list=True)
+	next_event = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `typ` != 'Match' AND `event_date` > CURDATE() - INTERVAL 1 DAY ORDER BY `event_date` ASC LIMIT 1""", as_list=True)
 	if len(next_event) == 1:
 		context['next_event'] = frappe.get_doc("TP Event", next_event[0][0])
 	context['next_game'] = {}
-	next_game = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `typ` = 'Match' ORDER BY `event_date` ASC LIMIT 1""", as_list=True)
+	next_game = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `typ` = 'Match' AND `event_date` > CURDATE() - INTERVAL 1 DAY ORDER BY `event_date` ASC LIMIT 1""", as_list=True)
 	if len(next_game) == 1:
 		context['next_game'] = frappe.get_doc("TP Event", next_game[0][0])
 	context['top_three'] = get_top_three()
