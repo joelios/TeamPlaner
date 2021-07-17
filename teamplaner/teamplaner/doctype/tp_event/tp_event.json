@@ -8,6 +8,7 @@
   "typ",
   "event_date",
   "event_from",
+  "gegner",
   "cb_1",
   "team",
   "event_destination",
@@ -107,9 +108,15 @@
    "fieldtype": "Data",
    "label": "Breitengrad",
    "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.typ=='Match'",
+   "fieldname": "gegner",
+   "fieldtype": "Data",
+   "label": "Gegner"
   }
  ],
- "modified": "2020-11-30 16:16:11.756701",
+ "modified": "2021-07-17 22:31:43.400717",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "TP Event",
