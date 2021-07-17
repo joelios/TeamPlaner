@@ -11,7 +11,9 @@
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 30px; margin-top: 60px;"></div>
-	<center><i class="fas fa-tools fa-9x"></i></center>
+	{% include "templates/includes/swissunihockey/tabelle_full.html" %}
+	<hr>
+	{% include "templates/includes/swissunihockey/spielplan.html" %}
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}

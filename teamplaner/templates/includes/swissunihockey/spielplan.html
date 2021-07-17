@@ -1,0 +1,23 @@
+<h3>{{ spielplan.titel }}</h3>
+<table class="fixed-table table-striped" style="width: 100%; font-size: 9pt;">
+	<thead>
+		<tr>
+			<th>Wann</th>
+			<th>Wo</th>
+			<th>Heim</th>
+			<th>Gast</th>
+			<th>Res.</th>
+		</tr>
+	</thead>
+	<tbody>
+{% for game in spielplan.games %}
+		<tr>
+			<td>{{ game.cells[0].text[0] }}<br>{{ game.cells[0].text[1] }}</td>
+			<td>{{ game.cells[1].text[0] }}<br>{{ game.cells[1].text[1] }}</td>
+			<td>{{ game.cells[2].text[0] }}</td>
+			<td>{{ game.cells[3].text[0] }}</td>
+			<td>{{ game.cells[4].text[0] }}</td>
+		</tr>
+{% endfor %}
+	</tbody>
+</table>

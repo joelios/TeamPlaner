@@ -3,29 +3,32 @@
 		<div class="card-body">
 			<center>
 				Tabelle
-				<!--<table class="text-muted" style="width: 100%; table-layout: fixed;">
+				{% if tabelle.go_for_it %}
+				<table class="text-muted" style="width: 100%; table-layout: fixed;">
 					<tbody>
 						<tr>
-							<td style="text-align: left;">3</td>
-							<td class="cut-off" style="text-align: left; width: 60%;">XYZ</td>
-							<td style="text-align: left;">+3</td>
-							<td style="text-align: right;">8</td>
+							<td style="text-align: left;">{{ tabelle.rankings[0][0] }}</td>
+							<td class="cut-off" style="text-align: left; width: 60%;">{{ tabelle.rankings[0][1] }}</td>
+							<td style="text-align: left;">{{ tabelle.rankings[0][2] }}</td>
+							<td style="text-align: right;">{{ tabelle.rankings[0][3] }}</td>
 						</tr>
 						<tr>
-							<td style="text-align: left;"><b>4</b></td>
-							<td class="cut-off" style="text-align: left;"><b>HCR</b></td>
-							<td style="text-align: left;"><b>+5</b></td>
-							<td style="text-align: right;"><b>7</b></td>
+							<td style="text-align: left;">{{ tabelle.rankings[1][0] }}</td>
+							<td class="cut-off" style="text-align: left;">{{ tabelle.rankings[1][1] }}</td>
+							<td style="text-align: left;">{{ tabelle.rankings[1][2] }}</td>
+							<td style="text-align: right;">{{ tabelle.rankings[1][3] }}</td>
 						</tr>
 						<tr>
-							<td style="text-align: left;">5</td>
-							<td class="cut-off" style="text-align: left;">XYsdfddafgsdfgsdfgsdfgsdfgsdsfasdfZ</td>
-							<td style="text-align: left;">+3</td>
-							<td style="text-align: right;">6</td>
+							<td style="text-align: left;">{{ tabelle.rankings[2][0] }}</td>
+							<td class="cut-off" style="text-align: left;">{{ tabelle.rankings[2][1] }}</td>
+							<td style="text-align: left;">{{ tabelle.rankings[2][2] }}</td>
+							<td style="text-align: right;">{{ tabelle.rankings[2][3] }}</td>
 						</tr>
 					</tbody>
-				</table>-->
-				<br><i class="fas fa-tools"></i>
+				</table>
+				{% else %}
+					<br><p class="text-muted">Noch nicht verfügbar</p>
+				{% endif %}
 			</center>
 		</div>
 	</div>
