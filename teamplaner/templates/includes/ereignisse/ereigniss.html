@@ -60,33 +60,33 @@
 	<!-- Swiper -->
 	<div class="swiper-container" style="height: 200px;">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide menu">
+			<div class="swiper-slide menu" style="border-bottom-right-radius: 5px;">
 				{% if frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d') > frappe.utils.now() %}
 				{% if vars.mein_status != 'Abwesend' %}
 					{% if vars.mein_status == 'Anwesend' %}
 						<div>
-							<button type="button" class="btn btn-secondary" style="color: white; width: 100%; margin-top: 10px;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
+							<button type="button" class="btn btn-secondary" style="border: 1px solid white; color: white; width: 95%; margin-top: 10px; margin-left: 5px;" onclick="komme_zu_spaet('{{ event.name }}');">Komme zu spät</button>
 						</div>
 					{% else %}
 						<div>
-							<button type="button" class="btn btn-success" style="color: white; width: 100%; margin-top: 10px;" onclick="komme_puenktlich('{{ event.name }}');">Komme pünktlich</button>
+							<button type="button" class="btn btn-success" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;" onclick="komme_puenktlich('{{ event.name }}');">Komme pünktlich</button>
 						</div>
 					{% endif %}
 					<div>
-						<button type="button" class="btn btn-danger" style="color: white; width: 100%; margin-top: 10px;" data-toggle="modal" data-target="#abmeldenmodal{{ event.name }}">Abmelden</button>
+						<button type="button" class="btn btn-danger" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;" data-toggle="modal" data-target="#abmeldenmodal{{ event.name }}">Abmelden</button>
 					</div>
 				{% else %}
 					<div>
-						<button type="button" class="btn btn-success" style="color: white; width: 100%; margin-top: 10px;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
+						<button type="button" class="btn btn-success" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;" onclick="anmelden('{{ event.name }}');">Anmelden</button>
 					</div>
 				{% endif %}
 				{% endif %}
 				<div>
-					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="color: white; width: 100%; margin-top: 10px;"><i class="fas fa-info-circle"></i></button>
+					<button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal{{ event.name }}" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;"><i class="fas fa-info-circle"></i></button>
 				</div>
 			</div>
 			<div class="swiper-slide content">
-				<div class="menu-button" style="{% if vars.mein_status != 'Abwesend' %}{% if vars.mein_status == 'Anwesend' %}background-color: #218838;{% else %}background-color: #5a6268;{% endif %}{% else %}background-color: #c82333;{% endif %}">
+				<div class="menu-button" style="{% if vars.mein_status != 'Abwesend' %}{% if vars.mein_status == 'Anwesend' %}background-color: #218838;{% else %}background-color: #5a6268;{% endif %}{% else %}background-color: #c82333;{% endif %} border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
 					<div><center><i class="fas fa-angle-double-right" style="color: white;"></i></center></div>
 					<div style="min-height: 40px; margin-top: 5px;">
 						<center>
@@ -183,9 +183,9 @@
 						{% if teilnehmer.status != 'Abwesend' %}
 							<div class="col-3" style="margin-top: 5px;">
 								{% if teilnehmer.status == 'Anwesend' %}
-									<img src="{{teilnehmer.bild }}" width="100%" class="rounded-circle" style="border: 3px solid #218838;">
+									<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" width="100%" class="rounded-circle" style="border: 3px solid #218838;">
 								{% elif teilnehmer.status == 'Verspätet' %}
-									<img src="{{teilnehmer.bild }}" width="100%" class="rounded-circle" style="border: 3px solid #5a6268;">
+									<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" width="100%" class="rounded-circle" style="border: 3px solid #5a6268;">
 								{% endif %}
 							</div>
 						{% endif %}
@@ -202,7 +202,7 @@
 						{% if teilnehmer.status == 'Abwesend' %}
 						<div class="col-12" style="margin-bottom: 5px;">
 							<div class="media border" style="padding: 0.1rem !important; border-radius: 10px;">
-								<img src="{{teilnehmer.bild }}" class="align-self-center mr-3 rounded-circle" style="width: 60px; border: 3px solid #c82333;">
+								<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" class="align-self-center mr-3 rounded-circle" style="width: 60px; border: 3px solid #c82333;">
 								<div class="media-body">
 									<p>{{ teilnehmer.vorname }} {{ teilnehmer.nachname }}<br>{{ teilnehmer.bemerkung }}</p>
 								</div>
@@ -240,17 +240,17 @@
 				{% endif %}
 					<div class="col-4">
 						<center>
-							<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white;">{{ vars.anwesend }}</div>
+							<div class="rounded-circle" style="background-color: #218838; width: 30px; height: 30px; color: white; padding-top: 3px;">{{ vars.anwesend }}</div>
 						</center>
 					</div>
 					<div class="col-4">
 						<center>
-							<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white;">{{ vars.verspaetet }}</div>
+							<div class="rounded-circle" style="background-color: #5a6268; width: 30px; height: 30px; color: white; padding-top: 3px;">{{ vars.verspaetet }}</div>
 						</center>
 					</div>
 					<div class="col-4">
 						<center>
-							<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white;">{{ vars.abwesend }}</div>
+							<div class="rounded-circle" style="background-color: #c82333; width: 30px; height: 30px; color: white; padding-top: 3px;">{{ vars.abwesend }}</div>
 						</center>
 					</div>
 				</div>

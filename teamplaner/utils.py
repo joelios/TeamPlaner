@@ -40,3 +40,45 @@ def get_staff_img():
 		return staff_img
 	else:
 		return False
+		
+@frappe.whitelist()
+def update_user_in_events():
+	events = frappe.db.sql("""SELECT `name` FROM `tabTP Event`""", as_dict=True)
+	print("{qty} events".format(qty=len(events)))
+	for event in events:
+		print("fetch event")
+		event = frappe.get_doc("TP Event", event.name)
+		for event_user in event.teilnehmer:
+			mitglied = frappe.get_doc("Mitglied", event_user.mitglied)
+			event_user.user = mitglied.user_id
+			event_user.bild = mitglied.bild
+			event_user.vorname = mitglied.vorname
+			event_user.nachname = mitglied.nachname
+		event.save()
+		frappe.db.commit()
+	print("done")
+	return
+
+@frappe.whitelist()
+def add_all_user_to_all_events():
+	users = frappe.db.sql("""SELECT `name` FROM `tabMitglied`""", as_dict=True)
+	print("{qty} user found".format(qty=len(users)))
+	for user in users:
+		print("check user")
+		events = frappe.db.sql("""SELECT `name` FROM `tabTP Event` WHERE `name` NOT IN (
+									SELECT `parent` FROM `tabTP Event Teilnehmer` WHERE `mitglied` = '{user}')""".format(user=user.name), as_dict=True)
+		for event in events:
+			print("update event")
+			event = frappe.get_doc("TP Event", event.name)
+			row = event.append('teilnehmer', {})
+			mitglied = frappe.get_doc("Mitglied", user.name)
+			row.mitglied = mitglied.name
+			row.status = "Anwesend"
+			row.user = mitglied.user_id
+			row.bild = mitglied.bild
+			row.vorname = mitglied.vorname
+			row.nachname = mitglied.nachname
+			event.save()
+			frappe.db.commit()
+	print("done")
+	return
