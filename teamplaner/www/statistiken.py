@@ -34,6 +34,7 @@ def get_praesenz_table(limit=False):
 									COUNT(`tpetanwesend`.`mitglied`) AS `anwesend`
 								FROM `tabTP Event Teilnehmer` AS `tpetanwesend`
 								WHERE `tpetanwesend`.`status` = 'Anwesend'
+								AND `tpetanwesend`.`parent` IN (SELECT `name` FROM `tabTP Event` WHERE `event_date` <= CURDATE())
 								GROUP BY `tpetanwesend`.`mitglied`) AS `tble_anw` ON `tble_anw`.`mitglied` = `tpet`.`mitglied`
 							LEFT JOIN
 							(
@@ -42,6 +43,7 @@ def get_praesenz_table(limit=False):
 									COUNT(`tpetabwesend`.`mitglied`) AS `abwesend`
 								FROM `tabTP Event Teilnehmer` AS `tpetabwesend`
 								WHERE `tpetabwesend`.`status` = 'Abwesend'
+								AND `tpetabwesend`.`parent` IN (SELECT `name` FROM `tabTP Event` WHERE `event_date` <= CURDATE())
 								GROUP BY `tpetabwesend`.`mitglied`) AS `tble_abw` ON `tble_abw`.`mitglied` = `tpet`.`mitglied`
 							LEFT JOIN
 							(
@@ -50,9 +52,11 @@ def get_praesenz_table(limit=False):
 									COUNT(`tpetspaet`.`mitglied`) AS `spaet`
 								FROM `tabTP Event Teilnehmer` AS `tpetspaet`
 								WHERE `tpetspaet`.`status` = 'Verspätet'
+								AND `tpetspaet`.`parent` IN (SELECT `name` FROM `tabTP Event` WHERE `event_date` <= CURDATE())
 								GROUP BY `tpetspaet`.`mitglied`) AS `tble_sp` ON `tble_sp`.`mitglied` = `tpet`.`mitglied`
+							WHERE `tpet`.`parent` IN (SELECT `name` FROM `tabTP Event` WHERE `event_date` <= CURDATE())
 							GROUP BY `tpet`.`mitglied`
-							ORDER BY `points` DESC, `spaet` ASC{filter}""".format(filter=filter), as_dict=True)
+							ORDER BY `points` DESC, `spaet` ASC, `vorname` ASC{filter}""".format(filter=filter), as_dict=True)
 	return data
 
 def get_top_three():

@@ -9,6 +9,7 @@
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 15px; margin-top: 60px;"></div>
+	<div class="row"><div class="col-12"><center><h1>Dashboard</h1></center></div></div>
 	<div class="row h-100">
 		{% include "templates/includes/dashboard_highlights/next_event.html" %}
 		{% include "templates/includes/dashboard_highlights/next_game.html" %}
@@ -16,6 +17,7 @@
 		{% include "templates/includes/dashboard_highlights/liveticker.html" %}
 		{% include "templates/includes/dashboard_highlights/topscorer.html" %}
 		{% include "templates/includes/dashboard_highlights/praesenz.html" %}
+		{% include "templates/includes/dashboard_highlights/logo.html" %}
 	</div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}
