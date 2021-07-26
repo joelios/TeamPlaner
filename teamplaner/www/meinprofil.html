@@ -21,11 +21,13 @@
 				<th>Begründung</th>
 				<th>Betrag</th>
 			</tr>
+			{% for busse in user_stamm.bussen %}
 			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>{{ frappe.utils.get_datetime(busse.datum).strftime('%d.%m.%y') }}</td>
+				<td>{{ busse.begruendung }}</td>
+				<td>{{ busse.betrag }}</td>
 			</tr>
+			{% endfor %}
 		</table>
 	</center><br>
 	<center><a href="/?cmd=web_logout"><button type="button" class="btn btn-danger">Logout</button></a></center><div style="min-height: 50px;"></div>
