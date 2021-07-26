@@ -1,0 +1,37 @@
+{
+ "creation": "2021-07-26 12:57:30.611117",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "betrag",
+  "begr\u00fcndung"
+ ],
+ "fields": [
+  {
+   "fieldname": "betrag",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Betrag",
+   "reqd": 1
+  },
+  {
+   "fieldname": "begr\u00fcndung",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Begr\u00fcndung",
+   "reqd": 1
+  }
+ ],
+ "istable": 1,
+ "modified": "2021-07-26 12:57:30.611117",
+ "modified_by": "Administrator",
+ "module": "TeamPlaner",
+ "name": "Bussen",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -16,7 +16,8 @@
   "nummer",
   "position",
   "lizenz",
-  "bild"
+  "bild",
+  "bussen"
  ],
  "fields": [
   {
@@ -95,10 +96,16 @@
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "Bild"
+  },
+  {
+   "fieldname": "bussen",
+   "fieldtype": "Table",
+   "label": "Bussen",
+   "options": "Bussen"
   }
  ],
  "image_field": "bild",
- "modified": "2020-11-30 13:57:46.873089",
+ "modified": "2021-07-26 12:58:00.014090",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Mitglied",
