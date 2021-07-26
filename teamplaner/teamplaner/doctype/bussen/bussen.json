@@ -4,8 +4,9 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "betrag",
-  "begr\u00fcndung"
+  "datum",
+  "begruendung",
+  "betrag"
  ],
  "fields": [
   {
@@ -16,7 +17,13 @@
    "reqd": 1
   },
   {
-   "fieldname": "begr\u00fcndung",
+   "fieldname": "datum",
+   "fieldtype": "Date",
+   "label": "Datum",
+   "reqd": 1
+  },
+  {
+   "fieldname": "begruendung",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Begr\u00fcndung",
@@ -24,7 +31,7 @@
   }
  ],
  "istable": 1,
- "modified": "2021-07-26 12:57:30.611117",
+ "modified": "2021-07-26 13:09:24.504869",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Bussen",
