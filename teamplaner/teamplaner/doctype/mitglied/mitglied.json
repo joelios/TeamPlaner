@@ -17,7 +17,13 @@
   "position",
   "lizenz",
   "bild",
-  "bussen"
+  "bussen",
+  "section_notifications",
+  "new_event",
+  "changed_event",
+  "new_aufgebot",
+  "teilnehmer_abmeldung",
+  "teilnehmer_verspaetung"
  ],
  "fields": [
   {
@@ -102,10 +108,45 @@
    "fieldtype": "Table",
    "label": "Bussen",
    "options": "Bussen"
+  },
+  {
+   "fieldname": "section_notifications",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_event",
+   "fieldtype": "Check",
+   "label": "Neuer Event"
+  },
+  {
+   "default": "0",
+   "fieldname": "changed_event",
+   "fieldtype": "Check",
+   "label": "\u00c4nderung Event"
+  },
+  {
+   "default": "0",
+   "fieldname": "new_aufgebot",
+   "fieldtype": "Check",
+   "label": "Neues Aufgebot"
+  },
+  {
+   "default": "0",
+   "fieldname": "teilnehmer_abmeldung",
+   "fieldtype": "Check",
+   "label": "Teilnehmer Abmeldung"
+  },
+  {
+   "default": "0",
+   "fieldname": "teilnehmer_verspaetung",
+   "fieldtype": "Check",
+   "label": "Teilnehmer Versp\u00e4tung"
   }
  ],
  "image_field": "bild",
- "modified": "2021-07-26 12:58:00.014090",
+ "modified": "2021-07-28 16:42:50.907560",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Mitglied",
