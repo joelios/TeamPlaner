@@ -22,7 +22,7 @@
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
 	<div class="container" style="height: 30px; margin-top: 60px;"></div>
-	<center><h1>Statistiken</h1></center>
+	<center><h1>Präsenz</h1></center>
 	<table class="fixed-table">
 		<thead>
 			<tr>
@@ -39,6 +39,24 @@
 				<td style="text-align: center">{{ user.anwesend }}</td>
 				<td style="text-align: center">{{ user.spaet }}</td>
 				<td style="text-align: center">{{ user.abwesend }}</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+	<hr>
+	<center><h1>Bussen</h1></center>
+	<table class="fixed-table">
+		<thead>
+			<tr>
+				<th style="width: 40%;">Spieler</th>
+				<th style="text-align: center;">Betrag</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for user in bussen %}
+			<tr>
+				<td class="cut-off">{{ user.vorname }} {{ user.nachname }}</td>
+				<td style="text-align: center">{{ user.betrag }}</td>
 			</tr>
 		{% endfor %}
 		</tbody>

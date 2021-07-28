@@ -13,6 +13,7 @@ def get_context(context):
 		frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
 		
 	context['table'] = get_praesenz_table()
+	context['bussen'] = get_bussen()
 		
 def get_praesenz_table(limit=False):
 	filter = ''
@@ -61,3 +62,14 @@ def get_praesenz_table(limit=False):
 
 def get_top_three():
 	return get_praesenz_table(limit=3)
+
+def get_bussen():
+	return frappe.db.sql("""SELECT
+							`tabBussen`.`parent`,
+							SUM(`tabBussen`.`betrag`) AS `betrag`,
+							`tabMitglied`.`vorname`,
+							`tabMitglied`.`nachname`
+							FROM `tabBussen`
+							LEFT JOIN `tabMitglied` ON `tabMitglied`.`name` = `tabBussen`.`parent`
+							GROUP BY `parent`
+							ORDER BY `betrag` DESC""", as_dict=True)
