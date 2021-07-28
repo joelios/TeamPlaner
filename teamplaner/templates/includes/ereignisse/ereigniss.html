@@ -176,19 +176,30 @@
 					</div>
 				</div>
 				<hr>
-				{% if vars.anwesend > 0 or vars.verspaetet > 0 %}
+				{% if vars.anwesend > 0 %}
 				<div class="row">
 					<div class="col-12">
 						<center><b>Teilnehmer</b><br></center>
 					</div>
 					{% for teilnehmer in event.teilnehmer %}
-						{% if teilnehmer.status != 'Abwesend' %}
+						{% if teilnehmer.status == 'Anwesend' %}
 							<div class="col-3" style="margin-top: 5px;">
-								{% if teilnehmer.status == 'Anwesend' %}
-									<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" width="100%" class="rounded-circle" style="border: 3px solid #218838;">
-								{% elif teilnehmer.status == 'Verspätet' %}
-									<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" width="100%" class="rounded-circle" style="border: 3px solid #5a6268;">
-								{% endif %}
+								<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" width="100%" class="rounded-circle" style="border: 3px solid #218838;">
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<hr>
+				{% endif %}
+				{% if vars.verspaetet > 0 %}
+				<div class="row">
+					<div class="col-12">
+						<center><b>Verspätete Teilnehmer</b><br></center>
+					</div>
+					{% for teilnehmer in event.teilnehmer %}
+						{% if teilnehmer.status == 'Verspätet' %}
+							<div class="col-3" style="margin-top: 5px;">
+								<img src="{% if teilnehmer.bild %}{{ teilnehmer.bild }}{% else %}/assets/teamplaner/images/user.png{% endif %}" width="100%" class="rounded-circle" style="border: 3px solid #5a6268;">
 							</div>
 						{% endif %}
 					{% endfor %}
