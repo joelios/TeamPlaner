@@ -10,6 +10,7 @@
 {% endblock %}
 {% block page_content %}
 	{% include "templates/navbar_top.html" %}
+	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	<div class="container" style="height: 15px; margin-top: 60px;"></div>
 	<center><h1>Kalender</h1></center>
 	<hr>
@@ -18,7 +19,7 @@
 		<hr>
 	{% endfor %}
 	<div class="container" style="height: 30px; margin-top: 60px;"></div>
-	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
+	
 	{% include "templates/navbar_bottom.html" %}
 {% endblock %}
 
@@ -26,9 +27,39 @@
 	<script>
 		{% include "templates/includes/msmroverlay/msmroverlay.js" %}
 	</script>
+	<!-- Initialize Swiper -->
+	<script>
+		var menuButton = document.querySelector('.menu-button');
+		var openMenu = function () {};
+		var swiper = new Swiper('.swiper-container', {
+			slidesPerView: 'auto',
+			initialSlide: 1,
+			resistanceRatio: 0,
+			slideToClickedSlide: true,
+			on: {
+				slideChangeTransitionStart: function () {
+					var slider = this;
+					if (slider.activeIndex === 0) {
+						menuButton.classList.add('cross');
+						// required because of slideToClickedSlide
+						menuButton.removeEventListener('click', openMenu, true);
+					} else {
+						menuButton.classList.remove('cross');
+					}
+				}
+				, slideChangeTransitionEnd: function () {
+					var slider = this;
+					if (slider.activeIndex === 1) {
+						menuButton.addEventListener('click', openMenu, true);
+					}
+				},
+			}
+		});
+	</script>
 	<script>
 		function myMaps() {
 			{% for event in events %}
+				{% if event.typ == 'Match' %}
 				// map for card
 				var mapProp_{{ event.name }} = {
 					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
@@ -49,7 +80,8 @@
 				google.maps.event.addListener(marker_{{ event.name }}, 'click', function() {
 				  infowindow_{{ event.name }}.open(map_{{ event.name }},marker_{{ event.name }});
 				});
-			
+				{% endif %}
+				
 				// map for info modal
 				var mapProp_{{ event.name }}_modal = {
 					center:new google.maps.LatLng({{ event.lat }}, {{ event.lng }}),
@@ -67,6 +99,7 @@
 				google.maps.event.addListener(marker_{{ event.name }}_modal, 'click', function() {
 				  infowindow_{{ event.name }}_modal.open(map_{{ event.name }}_modal,marker_{{ event.name }}_modal);
 				});
+				
 			{% endfor %}
 		}
 	</script>

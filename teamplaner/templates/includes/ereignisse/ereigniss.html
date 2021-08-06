@@ -97,8 +97,9 @@
 					</div>
 				</div>
 				<div class="row">
+					{% if event.typ == 'Match' %}
 					<div class="col-5" style="padding-right: 0px; min-height: 200px;">
-						<b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d %b') }}</b><br>
+						<b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d %B') }}</b><br>
 						{{ event.typ }}<br>
 						<p>
 							{% if event.typ == 'Match' %}
@@ -111,6 +112,21 @@
 						</p>
 					</div>
 					<div id="googleMap-{{ event.name }}" class="col-7" style="padding-left: 0px;"></div>
+					{% else %}
+					<div class="col-12" style="padding-right: 0px; min-height: 200px;">
+						<p><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d %B') }}</b><br>{{ event.typ }}</p>
+						<p>
+							<i class="fas fa-map-marked-alt"></i> {{ event.event_destination }}<br>
+							<i class="fas fa-hourglass-start"></i> {{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }} <->
+							<i class="fas fa-hourglass-end"></i> {{ frappe.utils.get_time(event.event_to).strftime('%H:%M') }}
+						</p>
+						{% if event.event_description != event.typ %}
+						<p>{{ event.event_description }}</p>
+						{% else %}
+						<p>Es sind keine speziellen Informationen hinterlegt</p>
+						{% endif %}
+					</div>
+					{% endif %}
 				</div>
 			</div>
 		</div>
@@ -283,32 +299,4 @@
 
 
 
-<!-- Initialize Swiper -->
-	<script>
-		var menuButton = document.querySelector('.menu-button');
-		var openMenu = function () {};
-		var swiper = new Swiper('.swiper-container', {
-			slidesPerView: 'auto',
-			initialSlide: 1,
-			resistanceRatio: 0,
-			slideToClickedSlide: true,
-			on: {
-				slideChangeTransitionStart: function () {
-					var slider = this;
-					if (slider.activeIndex === 0) {
-						menuButton.classList.add('cross');
-						// required because of slideToClickedSlide
-						menuButton.removeEventListener('click', openMenu, true);
-					} else {
-						menuButton.classList.remove('cross');
-					}
-				}
-				, slideChangeTransitionEnd: function () {
-					var slider = this;
-					if (slider.activeIndex === 1) {
-						menuButton.addEventListener('click', openMenu, true);
-					}
-				},
-			}
-		});
-	</script>
+

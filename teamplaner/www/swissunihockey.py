@@ -17,7 +17,7 @@ def get_context(context):
 	return context
 
 def get_spielplan():
-	response = requests.get("https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2021")
+	response = requests.get("https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2021&games_per_page=20")
 	r = response.json()['data']
 	data = {}
 	data['titel'] = r['title']
