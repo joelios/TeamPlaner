@@ -26,7 +26,8 @@ def get_praesenz_table(limit=False):
 								IFNULL(`tble_anw`.`anwesend`, 0) AS `anwesend`,
 								IFNULL(`tble_abw`.`abwesend`, 0) AS `abwesend`,
 								IFNULL(`tble_sp`.`spaet`, 0) AS `spaet`,
-								(IFNULL(`tble_anw`.`anwesend`, 0) + IFNULL(`tble_sp`.`spaet`, 0) - IFNULL(`tble_abw`.`abwesend`, 0)) AS `points`
+								(IFNULL(`tble_anw`.`anwesend`, 0) + IFNULL(`tble_sp`.`spaet`, 0) - IFNULL(`tble_abw`.`abwesend`, 0)) AS `points`,
+								((100 / (IFNULL(`tble_anw`.`anwesend`, 0) + IFNULL(`tble_abw`.`abwesend`, 0) + IFNULL(`tble_sp`.`spaet`, 0))) * (IFNULL(`tble_anw`.`anwesend`, 0) + IFNULL(`tble_sp`.`spaet`, 0))) AS `percent`
 							FROM `tabTP Event Teilnehmer` AS `tpet`
 							LEFT JOIN
 							(

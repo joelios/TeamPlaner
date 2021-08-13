@@ -30,6 +30,7 @@
 				<th style="text-align: center;">Anw.</th>
 				<th style="text-align: center">Versp.</th>
 				<th style="text-align: center">Abw.</th>
+				<th style="text-align: center">%</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -39,6 +40,7 @@
 				<td style="text-align: center">{{ user.anwesend }}</td>
 				<td style="text-align: center">{{ user.spaet }}</td>
 				<td style="text-align: center">{{ user.abwesend }}</td>
+				<td style="text-align: center">{{ user.percent|round(2) }}</td>
 			</tr>
 		{% endfor %}
 		</tbody>

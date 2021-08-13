@@ -99,8 +99,11 @@
 				<div class="row">
 					{% if event.typ == 'Match' %}
 					<div class="col-5" style="padding-right: 0px; min-height: 200px;">
-						<b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d %B') }}</b><br>
-						{{ event.typ }}<br>
+						<p>
+							<b>{{ _(frappe.utils.get_datetime(event.event_date).strftime('%a')) }}
+							{{ frappe.utils.get_datetime(event.event_date).strftime(' %d. ') }}{{ _(frappe.utils.get_datetime(event.event_date).strftime('%b')) }}</b><br>
+							{{ event.typ }}
+						</p>
 						<p>
 							{% if event.typ == 'Match' %}
 							<i class="fas fa-user-times"></i> {{ event.gegner }}<br>
@@ -114,7 +117,11 @@
 					<div id="googleMap-{{ event.name }}" class="col-7" style="padding-left: 0px;"></div>
 					{% else %}
 					<div class="col-12" style="padding-right: 0px; min-height: 200px;">
-						<p><b>{{ frappe.utils.get_datetime(event.event_date).strftime('%d %B') }}</b><br>{{ event.typ }}</p>
+						<p>
+							<b>{{ _(frappe.utils.get_datetime(event.event_date).strftime('%a')) }}
+							{{ frappe.utils.get_datetime(event.event_date).strftime(' %d. ') }}{{ _(frappe.utils.get_datetime(event.event_date).strftime('%b')) }}</b><br>
+							{{ event.typ }}
+						</p>
 						<p>
 							<i class="fas fa-map-marked-alt"></i> {{ event.event_destination }}<br>
 							<i class="fas fa-hourglass-start"></i> {{ frappe.utils.get_time(event.event_from).strftime('%H:%M') }} <->
