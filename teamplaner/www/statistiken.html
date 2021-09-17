@@ -63,6 +63,38 @@
 		{% endfor %}
 		</tbody>
 	</table>
+	<hr>
+	<center><h1>Bussenkatalog</h1></center>
+	<table class="fixed-table">
+		<thead>
+			<tr>
+				<th style="width: 40%;">Vergehen</th>
+				<th style="text-align: center;">Betrag</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr style="border-bottom: 1px solid black; border-top: 1px solid black;">
+				<td class="cut-off">Match Tenue im Training</td>
+				<td style="text-align: center">2.-</td>
+			</tr>
+			<tr style="border-bottom: 1px solid black;">
+				<td class="cut-off">Zu spät</td>
+				<td style="text-align: center">5.-</td>
+			</tr>
+			<tr style="border-bottom: 1px solid black;">
+				<td class="cut-off">Zu spätes Abmelden</td>
+				<td style="text-align: center">10.-</td>
+			</tr>
+			<tr style="border-bottom: 1px solid black;">
+				<td class="cut-off">Nicht Abmelden</td>
+				<td style="text-align: center">20.-</td>
+			</tr>
+			<tr style="border-bottom: 1px solid black;">
+				<td class="cut-off">Unnötige Matchstrafe</td>
+				<td style="text-align: center">20.-</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="container" style="height: 30px; margin-top: 60px;"></div>
 	{% include "templates/includes/msmroverlay/msmroverlay.html" %}
 	{% include "templates/navbar_bottom.html" %}

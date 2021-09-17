@@ -17,7 +17,7 @@
 	}
 	.content {
 		width: 100%;
-		padding-left: 75px;
+        padding-left: 65px;
 	}
 	.menu-button {
 		position: absolute;
@@ -33,6 +33,13 @@
 		margin-right: 0px !important;
 		margin-left: 0px !important;
 	}
+    .row {
+        margin-right: 0px !important;
+    }
+    html,
+    body {
+    overflow-x: hidden;
+    }
 </style>
 
 {% set vars = {'anwesend': 0, 'abwesend': 0, 'verspaetet': 0, 'mein_status': 'Abwesend', 'bg_color': '#c82333'} %}
@@ -130,7 +137,7 @@
 						{% if event.event_description != event.typ %}
 						<p>{{ event.event_description }}</p>
 						{% else %}
-						<p>Es sind keine speziellen Informationen hinterlegt</p>
+						<p>Es sind keine Informationen hinterlegt</p>
 						{% endif %}
 					</div>
 					{% endif %}
