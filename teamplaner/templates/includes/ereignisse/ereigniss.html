@@ -70,9 +70,15 @@
             <div class="swiper-slide menu" style="border-bottom-right-radius: 5px;">
                 {% if frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d') > frappe.utils.now() %}
                     {% if event.typ == 'Match' and frappe.utils.add_days(frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d'), -6) < frappe.utils.now() %}
-                        <div>
-                            <button type="button" class="btn btn-info" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;">Keine An-/Abmeldung mehr möglich.<br>Aufgebot erfolgt nach Abschlusstraining.</i></button>
-                        </div>
+                        {% if event.sende_email %}
+                            <div>
+                                <button type="button" class="btn btn-info" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;" onclick="show_waiting_screen(); window.location.href='https://teamplaner.app/api/method/frappe.utils.print_format.download_pdf?doctype=TP%20Event&name={{ event.name }}&format=Aufgebot&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'; setTimeout(function(){document.getElementById('msmroverlay').style.display = 'None';}, 3000);">Aufgebot als PDF</button>
+                            </div>
+                        {% else %}
+                            <div>
+                                <button type="button" class="btn btn-info" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;">Keine An-/Abmeldung mehr möglich.<br>Aufgebot erfolgt nach Abschlusstraining.</button>
+                            </div>
+                        {% endif %}
                     {% else %}
                         {% if vars.mein_status != 'Abwesend' %}
                             {% if vars.mein_status == 'Anwesend' %}
@@ -264,8 +270,16 @@
                 <div class="row">
                     {% if frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d') > frappe.utils.now() %}
                         {% if event.typ == 'Match' and frappe.utils.add_days(frappe.utils.get_datetime(event.event_date).strftime('%Y-%m-%d'), -6) < frappe.utils.now() %}
-                            <div>
-                                <button type="button" class="btn btn-info" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;">Keine An-/Abmeldung mehr möglich.<br>Aufgebot erfolgt nach Abschlusstraining.</i></button>
+                            <div class="col-12" style="margin-bottom: 5px; margin-top: 5px;">
+                            {% if event.sende_email %}
+                                <div>
+                                    <button type="button" class="btn btn-info" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;" data-dismiss="modal" onclick="show_waiting_screen(); window.location.href='https://teamplaner.app/api/method/frappe.utils.print_format.download_pdf?doctype=TP%20Event&name={{ event.name }}&format=Aufgebot&no_letterhead=1&letterhead=No%20Letterhead&settings=%7B%7D&_lang=en'; setTimeout(function(){document.getElementById('msmroverlay').style.display = 'None';}, 3000);">Aufgebot als PDF</button>
+                                </div>
+                            {% else %}
+                                <div>
+                                    <button type="button" class="btn btn-info" style="color: white; width: 95%; margin-top: 10px; margin-left: 5px;">Keine An-/Abmeldung mehr möglich.<br>Aufgebot erfolgt nach Abschlusstraining.</button>
+                                </div>
+                            {% endif %}
                             </div>
                         {% else %}
                             {% if vars.mein_status != 'Abwesend' %}
