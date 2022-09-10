@@ -17,7 +17,7 @@ def get_context(context):
 	return context
 
 def get_spielplan():
-	response = requests.get("https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2021&games_per_page=20")
+	response = requests.get("https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2022&games_per_page=20")
 	r = response.json()['data']
 	data = {}
 	data['titel'] = r['title']
@@ -27,7 +27,7 @@ def get_spielplan():
 	return data
 	
 def get_tabelle(view='full'):
-	response = requests.get("https://api-v2.swissunihockey.ch/api/rankings?season=2021&league=5&game_class=11&group=407867&view={view}".format(view=view))
+	response = requests.get("https://api-v2.swissunihockey.ch/api/calendars?season=2022&league=5&game_class=11&group=408429&view={view}".format(view=view))
 	r = response.json()['data']
 	data = {}
 	data['titel'] = r['title']
@@ -36,3 +36,7 @@ def get_tabelle(view='full'):
 		for ranking in r['regions'][0]['rows']:
 			data['rankings'].append(ranking)
 	return data
+
+	# Anleitung für Group ID:
+	# Das Jahr ändern der folgenden API: https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2022&games_per_page=20 und im 
+	# Browser eingeben. Im Browser nach "group" suchen und die Group ID auslesen. 
