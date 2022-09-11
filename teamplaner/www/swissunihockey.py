@@ -36,3 +36,7 @@ def get_tabelle():
 		for ranking in r['regions'][0]['rows']:
 			data['rankings'].append(ranking)
 	return data
+
+# Anleitung für Group ID:
+# Das Jahr ändern der folgenden API: https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2022&games_per_page=20 und im 
+# Browser eingeben. Im Browser nach "group" suchen und die Group ID auslesen.
