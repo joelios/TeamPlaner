@@ -13,11 +13,11 @@ def get_context(context):
 	if frappe.session.user=='Guest':
 		frappe.throw(_("You need to be logged in to access this page"), frappe.PermissionError)
 	context['spielplan'] = get_spielplan()
-	context['tabelle'] = get_tabelle('full')
+	context['tabelle'] = get_tabelle()
 	return context
 
 def get_spielplan():
-	response = requests.get("https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2021&games_per_page=20")
+	response = requests.get("https://api-v2.swissunihockey.ch/api/games?mode=team&team_id=428691&season=2022&games_per_page=20")
 	r = response.json()['data']
 	data = {}
 	data['titel'] = r['title']
@@ -26,8 +26,8 @@ def get_spielplan():
 		data['games'].append(game)
 	return data
 	
-def get_tabelle(view='full'):
-	response = requests.get("https://api-v2.swissunihockey.ch/api/rankings?season=2021&league=5&game_class=11&group=407867&view={view}".format(view=view))
+def get_tabelle():
+	response = requests.get("https://api-v2.swissunihockey.ch/api/rankings?season=2021&league=5&game_class=11&group=408429&view=full")
 	r = response.json()['data']
 	data = {}
 	data['titel'] = r['title']

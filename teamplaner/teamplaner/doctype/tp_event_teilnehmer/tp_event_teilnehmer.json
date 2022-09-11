@@ -1,22 +1,22 @@
 {
+ "actions": [],
  "creation": "2020-11-30 13:52:49.103612",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "mitglied",
-  "user",
-  "status",
-  "bild",
   "vorname",
   "nachname",
-  "bemerkung"
+  "status",
+  "bemerkung",
+  "mitglied",
+  "user",
+  "bild"
  ],
  "fields": [
   {
    "fieldname": "mitglied",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Mitglied",
    "options": "Mitglied",
    "reqd": 1
@@ -25,7 +25,8 @@
    "fetch_from": "mitglied.user_id",
    "fieldname": "user",
    "fieldtype": "Data",
-   "label": "User"
+   "label": "User",
+   "read_only": 1
   },
   {
    "fieldname": "status",
@@ -63,7 +64,8 @@
   }
  ],
  "istable": 1,
- "modified": "2021-07-16 09:26:34.782585",
+ "links": [],
+ "modified": "2021-09-25 13:36:25.277834",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "TP Event Teilnehmer",

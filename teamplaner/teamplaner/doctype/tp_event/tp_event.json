@@ -1,4 +1,6 @@
 {
+ "actions": [],
+ "autoname": "format:{typ}{#####}",
  "creation": "2020-11-30 11:03:59.559192",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -13,6 +15,7 @@
   "team",
   "event_destination",
   "event_to",
+  "sende_email",
   "section_google",
   "lat",
   "lng",
@@ -26,6 +29,7 @@
    "fieldname": "typ",
    "fieldtype": "Select",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Typ",
    "options": "Training\nMatch\nEvent",
    "reqd": 1
@@ -39,6 +43,7 @@
    "fieldname": "event_date",
    "fieldtype": "Date",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Am",
    "reqd": 1
   },
@@ -93,6 +98,7 @@
    "options": "TP Event Teilnehmer"
   },
   {
+   "depends_on": "eval:frappe.user.has_role(\"System Manager\")",
    "fieldname": "section_google",
    "fieldtype": "Section Break",
    "label": "Google Maps"
@@ -114,9 +120,16 @@
    "fieldname": "gegner",
    "fieldtype": "Data",
    "label": "Gegner"
+  },
+  {
+   "default": "0",
+   "fieldname": "sende_email",
+   "fieldtype": "Check",
+   "label": "Sende Email"
   }
  ],
- "modified": "2021-07-17 22:31:43.400717",
+ "links": [],
+ "modified": "2022-05-31 20:54:19.284118",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "TP Event",
@@ -135,7 +148,8 @@
    "write": 1
   }
  ],
- "sort_field": "modified",
+ "sort_field": "event_date",
  "sort_order": "DESC",
+ "title_field": "event_date",
  "track_changes": 1
 }

@@ -1,4 +1,5 @@
 {
+ "actions": [],
  "autoname": "naming_series:",
  "creation": "2020-11-18 11:46:01.493867",
  "doctype": "DocType",
@@ -22,8 +23,12 @@
   "new_event",
   "changed_event",
   "new_aufgebot",
-  "teilnehmer_abmeldung",
-  "teilnehmer_verspaetung"
+  "teilnehmer_mutation",
+  "event_preview",
+  "goali_alarm",
+  "section_scorer",
+  "tore",
+  "assists"
  ],
  "fields": [
   {
@@ -133,20 +138,44 @@
    "label": "Neues Aufgebot"
   },
   {
-   "default": "0",
-   "fieldname": "teilnehmer_abmeldung",
-   "fieldtype": "Check",
-   "label": "Teilnehmer Abmeldung"
+   "fieldname": "section_scorer",
+   "fieldtype": "Section Break",
+   "label": "Scorer"
   },
   {
    "default": "0",
-   "fieldname": "teilnehmer_verspaetung",
+   "fieldname": "tore",
+   "fieldtype": "Int",
+   "label": "Tore"
+  },
+  {
+   "default": "0",
+   "fieldname": "assists",
+   "fieldtype": "Int",
+   "label": "Assists"
+  },
+  {
+   "default": "0",
+   "fieldname": "teilnehmer_mutation",
    "fieldtype": "Check",
-   "label": "Teilnehmer Versp\u00e4tung"
+   "label": "Teilnehmer Mutation"
+  },
+  {
+   "default": "0",
+   "fieldname": "event_preview",
+   "fieldtype": "Check",
+   "label": "Event Preview"
+  },
+  {
+   "default": "0",
+   "fieldname": "goali_alarm",
+   "fieldtype": "Check",
+   "label": "Goali Alarm"
   }
  ],
  "image_field": "bild",
- "modified": "2021-07-28 16:42:50.907560",
+ "links": [],
+ "modified": "2022-05-31 20:49:52.264361",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Mitglied",
@@ -169,5 +198,6 @@
  "search_fields": "vorname,nachname,user_id",
  "sort_field": "modified",
  "sort_order": "DESC",
+ "title_field": "vorname",
  "track_changes": 1
 }

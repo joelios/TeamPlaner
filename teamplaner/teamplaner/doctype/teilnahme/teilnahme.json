@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "creation": "2021-09-25 22:27:11.398807",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "mitglied",
+  "training",
+  "status",
+  "begruendung"
+ ],
+ "fields": [
+  {
+   "default": "frappe.session.user",
+   "fieldname": "mitglied",
+   "fieldtype": "Link",
+   "label": "Teilnehmer",
+   "options": "Mitglied"
+  },
+  {
+   "fieldname": "training",
+   "fieldtype": "Link",
+   "label": "Training",
+   "options": "Training"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Ja\nTeilweise\nNein"
+  },
+  {
+   "depends_on": "eval:doc.status=='Nein'",
+   "fieldname": "begruendung",
+   "fieldtype": "Text",
+   "label": "Begr\u00fcndung",
+   "mandatory_depends_on": "eval:doc.status=='Nein'"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-09-25 22:47:39.477218",
+ "modified_by": "Administrator",
+ "module": "TeamPlaner",
+ "name": "Teilnahme",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "read": 1,
+   "report": 1,
+   "role": "All"
+  },
+  {
+   "create": 1,
+   "export": 1,
+   "if_owner": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Teamplaner spieler v2",
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

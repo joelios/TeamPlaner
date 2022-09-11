@@ -10,6 +10,7 @@ app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "info@msmr.ch"
 app_license = "MIT"
+app_logo_url = "/assets/teamplaner/images/favicon-32x32.png"
 
 
 # teamplaner specific changes
@@ -22,7 +23,10 @@ website_route_rules = [
 	# {"source": "/dashboard", "target": "https://teamplaner.app/dashboard"}
 # ]
 web_include_js = "/assets/teamplaner/js/teamplaner.js"
-
+website_context = {
+"favicon": "/assets/teamplaner/images/favicon-32x32.png",
+"splash_image": "/assets/teamplaner/images/teamplaner_wordmark_blau.png"
+}
 # Includes in <head>
 # ------------------
 

@@ -3,29 +3,18 @@
 		<div class="card-body">
 			<center>
 				Topscorer
-				<!--<table class="text-muted" style="width: 100%; table-layout: fixed;">
+				<table class="text-muted" style="width: 100%; table-layout: fixed;">
 					<tbody>
+                        {% for scorer in topscorer %}
 						<tr>
-							<td class="cut-off" style="width: 70%;">Severin Schindler</td>
-							<td>4</td>
-							<td>3</td>
-							<td>7</td>
+							<td class="cut-off" style="width: 70%;">{{ scorer.vorname }} {{ scorer.nachname }}</td>
+							<td>{{ scorer.tore }}</td>
+							<td>{{ scorer.assists }}</td>
+							<td>{{ scorer.punkte }}</td>
 						</tr>
-						<tr>
-							<td class="cut-off">Joël Mesmergfhdfghfdhgdhdfghdfghdfg</td>
-							<td>4</td>
-							<td>2</td>
-							<td>6</td>
-						</tr>
-						<tr>
-							<td class="cut-off">Andreas Christen</td>
-							<td>3</td>
-							<td>3</td>
-							<td>6</td>
-						</tr>
+                        {% endfor %}
 					</tbody>
-				</table>-->
-				<br><i class="fas fa-tools"></i>
+				</table>
 			</center>
 		</div>
 	</div>

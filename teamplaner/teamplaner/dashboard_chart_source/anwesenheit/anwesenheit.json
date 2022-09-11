@@ -1,0 +1,13 @@
+{
+ "creation": "2021-09-26 18:20:47.459542",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart Source",
+ "idx": 0,
+ "modified": "2021-09-26 18:20:47.459542",
+ "modified_by": "Administrator",
+ "module": "TeamPlaner",
+ "name": "anwesenheit",
+ "owner": "Administrator",
+ "source_name": "anwesenheit",
+ "timeseries": 0
+}

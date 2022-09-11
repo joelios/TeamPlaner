@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "creation": "2021-09-25 18:13:42.257167",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "anmelden",
+  "cb1",
+  "zu_spaet",
+  "cb2",
+  "abmelden",
+  "titel",
+  "start",
+  "end",
+  "ort",
+  "sb1"
+ ],
+ "fields": [
+  {
+   "fieldname": "start",
+   "fieldtype": "Datetime",
+   "in_list_view": 1,
+   "label": "Start",
+   "reqd": 1
+  },
+  {
+   "fieldname": "end",
+   "fieldtype": "Datetime",
+   "label": "Ende",
+   "reqd": 1
+  },
+  {
+   "fieldname": "titel",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Titel",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ort",
+   "fieldtype": "Data",
+   "label": "Ort"
+  },
+  {
+   "fieldname": "anmelden",
+   "fieldtype": "Button",
+   "label": "Anmelden"
+  },
+  {
+   "fieldname": "cb1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "zu_spaet",
+   "fieldtype": "Button",
+   "label": "Komme zu sp\u00e4t"
+  },
+  {
+   "fieldname": "cb2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "abmelden",
+   "fieldtype": "Button",
+   "label": "Abmelden"
+  },
+  {
+   "fieldname": "sb1",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "links": [
+  {
+   "group": "An-/Abmeldungen",
+   "link_doctype": "Teilnahme",
+   "link_fieldname": "training"
+  }
+ ],
+ "modified": "2021-09-25 22:27:57.627367",
+ "modified_by": "Administrator",
+ "module": "TeamPlaner",
+ "name": "Training",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Teamplaner spieler v2"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "titel",
+ "track_changes": 1
+}
