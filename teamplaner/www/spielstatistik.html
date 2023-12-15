@@ -1,0 +1,86 @@
+{% extends "templates/web.html" %}
+
+{% block style %}
+	<style>
+		{% include "templates/includes/msmroverlay/msmroverlay.css" %}
+	</style>
+{% endblock %}
+{% block page_content %}
+<div class="card left" style="height: 80vh;">
+	<div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                	<div class="card left" style="height: 10vh; margin-bottom: 1vh;">
+                		<div class="card-body">
+                			<center>
+                				<h1><span style="float: left; margin-top: -2vh;"><a href="/dashboard" onclick="show_waiting_screen();"><i class="fa fa-angle-left"></i></a></span><span class="pull-right" style="margin-top: -2vh;">HCR vs {{ next_game.gegner[:3] }}</span></h1>
+                			</center>
+                		</div>
+                	</div>
+                </div>
+                <div class="col-12">
+                	<div class="card left" id="tor" style="height: 8vh; margin-bottom: 1vh; background-color: lightgreen;">
+                		<div class="card-body"><a href="/add_tor" onclick="show_waiting_screen();">
+                			<center>
+                				<h2>Tor</h2>
+                			</center>
+                		</a></div>
+                	</div>
+                </div>
+                <div class="col-12">
+                	<div class="card left" style="height: 8vh; margin-bottom: 1vh; background-color: #ED9191;">
+                		<div class="card-body"><a href="/add_gegentor" onclick="show_waiting_screen();">
+                			<center>
+                				<h2>Gegentor</h2>
+                			</center>
+                		</a></div>
+                	</div>
+                </div>
+                <div class="col-12">
+                	<div class="card left" style="height: 8vh; margin-bottom: 1vh; background-color: #EDCE91;">
+                		<div class="card-body"><a href="/add_strafe" onclick="show_waiting_screen();">
+                			<center>
+                				<h2>Strafe</h2>
+                			</center>
+                		</a></div>
+                	</div>
+                </div>
+                <div class="col-12">
+                        <div class="card left" style="height: 8vh; margin-bottom: 1vh;">
+                                <div class="card-body"><a href="/linien_anp" onclick="show_waiting_screen();">
+                                        <center>
+                                                <h2>Anp. Linien</h2>
+                                        </center>
+                                </a></div>
+                        </div>
+                </div>
+                <div class="col-12">
+                	<div class="card left" style="height: 30vh;">
+                		<div class="card-body">
+                			<div class="row">
+                                <div class="col-3" style="text-align: left;"><h3>HCR</h3></div>
+                                <div class="col-6" style="text-align: center;"><h3>Zeit</h3></div>
+                                <div class="col-3" style="text-align: right;"><h3>{{ next_game.gegner[:3] }}</h3></div>
+                            </div>
+                            <div class="row h100">
+                                <div class="col-3" style="text-align: left;"><h1 style="font-size: 4rem;">{{ tore }}</h1></div>
+                                <div class="col-6" style="text-align: center;"><h1></h1></div>
+                                <div class="col-3" style="text-align: right;"><h1 style="font-size: 4rem;">{{ gegentore }}</h1></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" style="text-align: center;"><h1 style="font-size: 4rem;">14:26</h1></div>
+                            </div>
+                		</div>
+                	</div>
+                </div>
+            </div>
+	</div>
+</div>
+{% include "templates/includes/msmroverlay/msmroverlay.html" %}
+{% endblock %}
+
+{% block script %}
+	<script>
+		{% include "templates/includes/msmroverlay/msmroverlay.js" %}
+	</script>
+    {% endblock %}

@@ -28,7 +28,10 @@
   "goali_alarm",
   "section_scorer",
   "tore",
-  "assists"
+  "assists",
+  "pos_bilanz",
+  "neg_bilanz",
+  "bilanz"
  ],
  "fields": [
   {
@@ -171,11 +174,27 @@
    "fieldname": "goali_alarm",
    "fieldtype": "Check",
    "label": "Goali Alarm"
+  },
+  {
+   "fieldname": "pos_bilanz",
+   "fieldtype": "Int",
+   "label": "+ (Bilanz)"
+  },
+  {
+   "fieldname": "neg_bilanz",
+   "fieldtype": "Int",
+   "label": "- (Bilanz)"
+  },
+  {
+   "fieldname": "bilanz",
+   "fieldtype": "Int",
+   "label": "+/- Bilanz",
+   "read_only": 1
   }
  ],
  "image_field": "bild",
  "links": [],
- "modified": "2022-05-31 20:49:52.264361",
+ "modified": "2023-09-16 16:50:29.398427",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "Mitglied",

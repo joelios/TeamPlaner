@@ -1,0 +1,77 @@
+{% extends "templates/web.html" %}
+
+{% block style %}
+    <style>
+        {% include "templates/includes/msmroverlay/msmroverlay.css" %}
+    </style>
+{% endblock %}
+{% block page_content %}
+<div class="card left" style="height: 80vh;">
+    <div class="card-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card left" style="height: 10vh; margin-bottom: 1vh;">
+                <div class="card-body">
+                    <center>
+                        <h1><span style="float: left; margin-top: -2vh;"><a href="/spielstatistik" onclick="show_waiting_screen();"><i class="fa fa-angle-left"></i></a></span><span class="pull-right" style="margin-top: -2vh;">Strafe erf.</span></h1>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card left" style="height: 8vh; margin-bottom: 1vh;">
+                <div class="card-body">
+                    <center>
+                        <label for="zeitpunkt_tor">Zeitpunkt</label>
+                        <input type="time" id="zeitpunkt_tor" name="zeitpunkt_tor" value="12:00">
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card left" style="height: 8vh; margin-bottom: 1vh;">
+                <div class="card-body">
+                    <center>
+                        <label for="torschuetze">Spieler</label>
+                        <select name="torschuetze" id="torschuetze">
+                            <option value="leer">Bitte wählen</option>
+                            {% for spieler in next_game.teilnehmer %}
+                                {% if spieler.status != 'Abwesend' %}
+                                    <option value="{{ spieler.mitglied }}">{{ spieler.vorname }} {{ spieler.nachname }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card left" style="height: 8vh; margin-bottom: 1vh;">
+                <div class="card-body">
+                    
+                        <span class="pull-left"><label for="dauer">Dauer</label></span><span class="pull-right">
+                            <input type="time" id="dauer" name="dauer"></span>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="card left" id="tor" style="height: 8vh; margin-bottom: 1vh; background-color: lightgreen;">
+                <div class="card-body"><a href="/spielstatistik" onclick="show_waiting_screen();">
+                    <center>
+                        <h2>Erfassen</h2>
+                    </center>
+                </a></div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% include "templates/includes/msmroverlay/msmroverlay.html" %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        {% include "templates/includes/msmroverlay/msmroverlay.js" %}
+    </script>
+{% endblock %}

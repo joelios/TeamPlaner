@@ -81,5 +81,7 @@ def get_topscorer(limit=False):
         limit = ' Limit {limit}'.format(limit=limit)
     else:
         limit = ''
-    scorer = frappe.db.sql("""SELECT `vorname`, `nachname`, `tore`, `assists`, (`tore` + `assists`) AS `punkte` FROM `tabMitglied` ORDER BY `punkte` DESC, `tore` DESC, `nachname` ASC{limit}""".format(limit=limit), as_dict=True)
+    scorer = frappe.db.sql("""SELECT `vorname`, `nachname`, `tore`, `assists`, (`tore` + `assists`) AS `punkte`,
+    	                      `bilanz` AS `bilanz` FROM `tabMitglied` ORDER BY `punkte` DESC, `tore` DESC, `bilanz` DESC,
+							  `nachname` ASC{limit}""".format(limit=limit), as_dict=True)
     return scorer

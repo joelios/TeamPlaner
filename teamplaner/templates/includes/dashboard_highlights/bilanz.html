@@ -1,0 +1,19 @@
+<div class="col-6">
+	<div class="card left">
+		<div class="card-body">
+			<center>
+				+/- Bilanz
+				<table class="text-muted" style="width: 100%; table-layout: fixed;">
+					<tbody>
+                        {% for bilanz in topbilanz %}
+						<tr>
+							<td class="cut-off" style="width: 70%;">{{ bilanz.vorname }} {{ bilanz.nachname }}</td>
+							<td>{{ bilanz.bilanz }}</td>
+						</tr>
+                        {% endfor %}
+					</tbody>
+				</table>
+			</center>
+		</div>
+	</div>
+</div>

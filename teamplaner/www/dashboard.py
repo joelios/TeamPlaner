@@ -24,6 +24,7 @@ def get_context(context):
     context['top_three'] = get_top_three()
     context['tabelle'] = _get_tabelle()
     context['topscorer'] = get_topscorer(limit=3)
+    context['topbilanz'] = _get_topbilanz(limit=3)
     return context
 
 def _get_tabelle():
@@ -42,22 +43,22 @@ def _get_tabelle():
                         platz1 = [
                                 str(tabelle['rankings'][counter - 2]['cells'][0]["text"][0]),
                                 str(tabelle['rankings'][counter - 2]['cells'][2]["text"][0]),
-                                str(tabelle['rankings'][counter - 2]['cells'][9]["text"][0]),
-                                str(tabelle['rankings'][counter - 2]['cells'][10]["text"][0])
+                                str(tabelle['rankings'][counter - 2]['cells'][10]["text"][0]),
+                                str(tabelle['rankings'][counter - 2]['cells'][12]["text"][0])
                             ]
                         data['rankings'].append(platz1)
                         platz2 = [
                                 str(tabelle['rankings'][counter - 1]['cells'][0]["text"][0]),
                                 str(tabelle['rankings'][counter - 1]['cells'][2]["text"][0]),
-                                str(tabelle['rankings'][counter - 1]['cells'][9]["text"][0]),
-                                str(tabelle['rankings'][counter - 1]['cells'][10]["text"][0])
+                                str(tabelle['rankings'][counter - 1]['cells'][10]["text"][0]),
+                                str(tabelle['rankings'][counter - 1]['cells'][12]["text"][0])
                             ]
                         data['rankings'].append(platz2)
                         hcr_data = [
                                 '<b>' + str(ranking['cells'][0]["text"][0]) + '</b>',
                                 '<b>' + str(ranking['cells'][2]["text"][0]) + '</b>',
-                                '<b>' + str(ranking['cells'][9]["text"][0]) + '</b>',
-                                '<b>' + str(ranking['cells'][10]["text"][0]) + '</b>'
+                                '<b>' + str(ranking['cells'][10]["text"][0]) + '</b>',
+                                '<b>' + str(ranking['cells'][12]["text"][0]) + '</b>'
                             ]
                         data['rankings'].append(hcr_data)
                         break
@@ -66,22 +67,22 @@ def _get_tabelle():
                         platz1 = [
                                 str(tabelle['rankings'][counter - 1]['cells'][0]["text"][0]),
                                 str(tabelle['rankings'][counter - 1]['cells'][2]["text"][0]),
-                                str(tabelle['rankings'][counter - 1]['cells'][9]["text"][0]),
-                                str(tabelle['rankings'][counter - 1]['cells'][10]["text"][0])
+                                str(tabelle['rankings'][counter - 1]['cells'][10]["text"][0]),
+                                str(tabelle['rankings'][counter - 1]['cells'][12]["text"][0])
                             ]
                         data['rankings'].append(platz1)
                         hcr_data = [
                                 '<b>' + str(ranking['cells'][0]["text"][0]) + '</b>',
                                 '<b>' + str(ranking['cells'][2]["text"][0]) + '</b>',
-                                '<b>' + str(ranking['cells'][9]["text"][0]) + '</b>',
-                                '<b>' + str(ranking['cells'][10]["text"][0]) + '</b>'
+                                '<b>' + str(ranking['cells'][10]["text"][0]) + '</b>',
+                                '<b>' + str(ranking['cells'][12]["text"][0]) + '</b>'
                             ]
                         data['rankings'].append(hcr_data)
                         platz2 = [
                                 str(tabelle['rankings'][counter + 1]['cells'][0]["text"][0]),
                                 str(tabelle['rankings'][counter + 1]['cells'][2]["text"][0]),
-                                str(tabelle['rankings'][counter + 1]['cells'][9]["text"][0]),
-                                str(tabelle['rankings'][counter + 1]['cells'][10]["text"][0])
+                                str(tabelle['rankings'][counter + 1]['cells'][10]["text"][0]),
+                                str(tabelle['rankings'][counter + 1]['cells'][12]["text"][0])
                             ]
                         data['rankings'].append(platz2)
                         break
@@ -90,22 +91,22 @@ def _get_tabelle():
                     hcr_data = [
                             '<b>' + str(ranking['cells'][0]["text"][0]) + '</b>',
                             '<b>' + str(ranking['cells'][2]["text"][0]) + '</b>',
-                            '<b>' + str(ranking['cells'][9]["text"][0]) + '</b>',
-                            '<b>' + str(ranking['cells'][10]["text"][0]) + '</b>'
+                            '<b>' + str(ranking['cells'][10]["text"][0]) + '</b>',
+                            '<b>' + str(ranking['cells'][12]["text"][0]) + '</b>'
                         ]
                     data['rankings'].append(hcr_data)
                     platz1 = [
                             str(tabelle['rankings'][counter + 1]['cells'][0]["text"][0]),
                             str(tabelle['rankings'][counter + 1]['cells'][2]["text"][0]),
-                            str(tabelle['rankings'][counter + 1]['cells'][9]["text"][0]),
-                            str(tabelle['rankings'][counter + 1]['cells'][10]["text"][0])
+                            str(tabelle['rankings'][counter + 1]['cells'][10]["text"][0]),
+                            str(tabelle['rankings'][counter + 1]['cells'][12]["text"][0])
                         ]
                     data['rankings'].append(platz1)
                     platz2 = [
                             str(tabelle['rankings'][counter + 2]['cells'][0]["text"][0]),
                             str(tabelle['rankings'][counter + 2]['cells'][2]["text"][0]),
-                            str(tabelle['rankings'][counter + 2]['cells'][9]["text"][0]),
-                            str(tabelle['rankings'][counter + 2]['cells'][10]["text"][0])
+                            str(tabelle['rankings'][counter + 2]['cells'][10]["text"][0]),
+                            str(tabelle['rankings'][counter + 2]['cells'][12]["text"][0])
                         ]
                     data['rankings'].append(platz2)
                     break
@@ -120,3 +121,15 @@ def get_topscorer(limit=False):
         limit = ''
     scorer = frappe.db.sql("""SELECT `vorname`, `nachname`, `tore`, `assists`, (`tore` + `assists`) AS `punkte` FROM `tabMitglied` ORDER BY `punkte` DESC, `tore` DESC, `nachname` ASC{limit}""".format(limit=limit), as_dict=True)
     return scorer
+
+def _get_topbilanz(limit=False):
+    if limit:
+        limit = ' Limit {limit}'.format(limit=limit)
+    else:
+        limit = ''
+    bilanzen = frappe.db.sql("""SELECT `vorname`, `nachname`,
+                                `bilanz` FROM `tabMitglied` 
+                                ORDER BY `bilanz` DESC,
+                                `nachname` ASC
+                                {limit}""".format(limit=limit), as_dict=True)
+    return bilanzen

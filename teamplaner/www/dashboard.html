@@ -13,8 +13,8 @@
 	<div class="row h-100">
 		{% include "templates/includes/dashboard_highlights/next_event.html" %}
 		{% include "templates/includes/dashboard_highlights/next_game.html" %}
-		{% include "templates/includes/dashboard_highlights/tabelle.html" %}
-		{% include "templates/includes/dashboard_highlights/liveticker.html" %}
+		{% if tabelle %}{% include "templates/includes/dashboard_highlights/tabelle.html" %}{% endif %}
+		{% include "templates/includes/dashboard_highlights/bilanz.html" %}
 		{% include "templates/includes/dashboard_highlights/topscorer.html" %}
 		{% include "templates/includes/dashboard_highlights/praesenz.html" %}
 		{% include "templates/includes/dashboard_highlights/logo.html" %}

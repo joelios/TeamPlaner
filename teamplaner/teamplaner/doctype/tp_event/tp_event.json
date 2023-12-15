@@ -22,7 +22,9 @@
   "section_description",
   "event_description",
   "section_teilnehmer",
-  "teilnehmer"
+  "teilnehmer",
+  "section_verlauf",
+  "spielverlauf"
  ],
  "fields": [
   {
@@ -126,10 +128,22 @@
    "fieldname": "sende_email",
    "fieldtype": "Check",
    "label": "Sende Email"
+  },
+  {
+   "fieldname": "section_verlauf",
+   "fieldtype": "Section Break",
+   "label": "Verlauf"
+  },
+  {
+   "depends_on": "eval:doc.typ=='Match'",
+   "fieldname": "spielverlauf",
+   "fieldtype": "Table",
+   "label": "Spielverlauf",
+   "options": "Spielstatistik"
   }
  ],
  "links": [],
- "modified": "2022-05-31 20:54:19.284118",
+ "modified": "2023-09-22 23:24:05.541170",
  "modified_by": "Administrator",
  "module": "TeamPlaner",
  "name": "TP Event",

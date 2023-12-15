@@ -15,7 +15,13 @@ frappe.ui.form.on('Mitglied', {
         frm.add_custom_button(__("Add THIS User to all Events"), function() {
             add_this_user_to_all_events(frm);
         });
-	 }
+	 },
+	 pos_bilanz: function(frm){
+	    cur_frm.set_value('bilanz', cur_frm.doc.pos_bilanz - cur_frm.doc.neg_bilanz);
+	},
+	neg_bilanz: function(frm){
+	    cur_frm.set_value('bilanz', cur_frm.doc.pos_bilanz - cur_frm.doc.neg_bilanz);
+	}
 });
 
 function update_user_in_events(frm) {
